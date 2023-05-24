@@ -1,7 +1,8 @@
+// src/pages/Membros/Membros.jsx
 import React from "react"
 import { AuthContext } from "../../context/AuthContext"
 
-export const Membros = () => {
+const Membros = () => {
     const auth = React.useContext(AuthContext)
     console.log(auth)
 
@@ -13,3 +14,5 @@ export const Membros = () => {
         </div>
     )
 }
+
+export default Membros

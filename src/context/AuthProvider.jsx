@@ -37,11 +37,15 @@ export const AuthProvider = ({children}) => {
         const data = await api.signin(email, password)
 
         // Se o usuario e o token existirem (Se ambos existirem, significa que a autenticação foi bem-sucedida)
-        if(data.user && data.token) { 
-            setUser(data.user)
-            setToken(data.token)
-            navigate("/HomeGestao")
-            return true
+        if (data.user && data.token) { 
+            // Se o email e a senha do usuario forem iguais
+            if (data.user.email === email && data.user.password === password) {
+                setUser(data.user)
+                setToken(data.token)
+                navigate("/HomeGestao")
+                return true
+            }
+            return false
         }
         return false // Autenficação má sucedida
     }
