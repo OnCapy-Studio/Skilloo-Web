@@ -42,7 +42,7 @@ export const AuthProvider = ({children}) => {
             if (data.user.email === email && data.user.password === password) {
                 setUser(data.user)
                 setToken(data.token)
-                navigate("/HomeGestao")
+                navigate("/gestao")
                 return true
             }
             return false

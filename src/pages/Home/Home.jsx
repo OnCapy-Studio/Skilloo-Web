@@ -1,49 +1,75 @@
 // src/Home/Home.jsx
 import React from 'react'
-import { Routes, Route, Link, useNavigate } from 'react-router-dom'
-import { RequireAuth } from '../../context/RequireAuth'
+import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContext'
 
-import Membros from '../../pages/Membros/Membros'
-import logomarca from '../../assets/img/logomarca.png'
+import logomarca from '../../assets/img/logomarca.svg'
+import logotipo from '../../assets/img/logotipo.svg'
+import noz from '../../assets/img/noz.svg'
 
 import './Reset.css'
-import './Home.css'
+import * as C from "./style.js";
 
 const Home = () => {
     const auth = React.useContext(AuthContext)
     const navigate = useNavigate()
 
     const handleLogout = async () => {
-        console.log(auth)
         await auth.signout() // Chama a função signout() do objeto auth
         navigate('/') // Redireciona o usuário para a Home
     }
 
     return (
-        <div className="App">
-            <nav className='sideMenu'>
-                <Link to=""><img className="logomarca" src={logomarca} alt="" /></Link>
-                <Link to="">Home</Link>
-                <Link to="/membros">Gestao</Link>
+        <>
+            <C.Background>
+                <C.Header>
+                    <C.Container>
+                        <Link to=""><img src={logomarca} alt="" /></Link>
 
-                {auth.user && (
-                    <button className="logOutBtn" onClick={handleLogout}>Sair</button>
-                )}
-            </nav>
+                        <C.Navigation>
+                            <Link to="/gestao">Gestão</Link>
 
-            <main className='container'>
-                <header>
-                    aaaa
-                </header>
+                            {auth.user && (
+                                <C.LogOutBtn onClick={handleLogout}>Sair</C.LogOutBtn>
+                            )}
+                        </C.Navigation>
+                    </C.Container>
+                </C.Header>
 
-                <section className='frame'>
-                    <Routes>
-                        <Route path="/membros" element={<RequireAuth><Membros /></RequireAuth>} />
-                    </Routes>
-                </section>
-            </main>
-        </div>
+                <C.Section>
+                    <C.Container>
+                        <C.GroupTitleButton>  
+                            <div>
+                                <C.Title>
+                                    Bem-vindo ao Skilloo
+                                </C.Title>
+
+                                <C.Subtitle>
+                                    Seu sistema favorito de gerenciamento e organização
+                                </C.Subtitle>
+                            </div>
+
+                            <C.AboutUsBtn>
+                                <Link to="https://oncapystudio.netlify.app/#">
+                                    Sobre nozes <C.Icon src={noz} alt="" />
+                                </Link>
+                            </C.AboutUsBtn>
+                            
+                        </C.GroupTitleButton>
+
+                        <C.Logotipo src={logotipo} alt=""/>
+                    </C.Container>
+                </C.Section>
+            </C.Background>
+            
+            <C.Main >
+                <C.Section>
+                    <C.Title>
+                        Nosso objetivo com você
+                    </C.Title>
+                </C.Section>
+            </C.Main>
+        </>
     )
 }
 
