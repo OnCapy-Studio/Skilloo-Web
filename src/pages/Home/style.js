@@ -121,7 +121,6 @@ export const AboutUsBtn = styled.button`
     border-radius: 10px;
     padding: 0.5em 1em;
     width: 200px;
-    color: #6A5FB6;
     background-color: #FFF;
     font-size: 1.25rem;
     font-weight: 700;
@@ -130,6 +129,7 @@ export const AboutUsBtn = styled.button`
     a {
         display: flex;
         justify-content: space-between;
+        color: #6A5FB6;;
     }
 
     img {

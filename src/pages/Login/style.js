@@ -1,4 +1,4 @@
-import { styled, createGlobalStyle } from 'styled-components';
+import { styled, createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
     html, body {
@@ -37,24 +37,6 @@ export const Form = styled.form`
     border-radius: 15px;
 `
 
-export const Label = styled.label`
-    font-size: 0.9rem;
-    margin: 0 0 5px; 
-`
-
-export const Input = styled.input`
-    outline: none;
-    border: 0;
-    border-radius: 10px;
-    width: 100%;
-    height: 50px;
-    padding: 1em;
-    font-size: 0.9rem;
-    font-family: 'Inter', sans-serif;
-    color: #3F3F3F;
-    background-color: #CFD7FE;
-`
-
 export const LoginBtn = styled.button`
     outline: none;
     border: none;
@@ -67,9 +49,17 @@ export const LoginBtn = styled.button`
 `
 
 export const Footer = styled.footer`
-    ul {
-        display: flex;
-        justify-content: space-around;
+    display: flex;
+    justify-content: space-around;
+    width: 300px;
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: #646464;;
         text-decoration: underline;
     }
 `

@@ -7,7 +7,7 @@ import logomarca from '../../assets/img/logomarca.svg'
 import logotipo from '../../assets/img/logotipo.svg'
 import noz from '../../assets/img/noz.svg'
 
-import './Reset.css'
+import '../../Reset.css'
 import * as C from "./style.js";
 
 const Home = () => {
@@ -27,7 +27,12 @@ const Home = () => {
                         <Link to=""><img src={logomarca} alt="" /></Link>
 
                         <C.Navigation>
-                            <Link to="/gestao">Gestão</Link>
+                            {auth.user ? 
+                                    <Link to="/gestao">Entrar</Link>
+                                :
+                                    <Link to="/gestao">Log In</Link>
+                            }
+                            
 
                             {auth.user && (
                                 <C.LogOutBtn onClick={handleLogout}>Sair</C.LogOutBtn>

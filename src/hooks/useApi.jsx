@@ -7,7 +7,7 @@ const api = axios.create({ // Atribuindo uma instância do axios na variavel api
 
 export const useApi = () => ({ // Hook que retorna um obj com as funções que serão utilizadas
     validateToken: async token => {
-        return {user: {id: 1, name: "Murilo", email:"mureulos@gmail.com"}} // Resposta fake para testar o funcionamento da aplicação
+        return {user: {id: 1, name: "Usuario1", email:"admin@gmail.com"}} // Resposta fake para testar o funcionamento da aplicação
 
         // Realiza uma requisição para o endpoint /validate e envia um parâmetro token 
         const response = await api.post("/validate", {token}) 
@@ -15,7 +15,7 @@ export const useApi = () => ({ // Hook que retorna um obj com as funções que s
     }, 
     signin: async (email, password) => {
         return { // Resposta fake para testar o funcionamento da aplicação
-            user: {id: 1, name: "Murilo", email:"mureulos@gmail.com", password:"123"},
+            user: {id: 1, name: "Usuario1", email:"admin@gmail.com", password:"123"},
             token: '123546'
         }
 
