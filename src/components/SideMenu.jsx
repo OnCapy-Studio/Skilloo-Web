@@ -5,21 +5,19 @@ import { Link, useLocation } from 'react-router-dom'
 import { AuthContext } from '../context/AuthContext'
 
 import logomarca from '../assets/img/logomarca.svg'
-import hamburge from '../assets/img/hamburge.png'
-import close from '../assets/img/close.png'
 
 const SideMenuContainer = styled.nav`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 1em 1.5em;
+    padding: 1.5em;
     height: 100vh;
     background-color: #6a5fb6;
 
     div {
         display: flex;
         flex-direction: column;
-        gap: 3em;
+        gap: 1em;
     }
     
     img {
@@ -29,35 +27,55 @@ const SideMenuContainer = styled.nav`
     ul {
         display: flex;
         flex-direction: column;
-        gap: 1.5em;
+        gap: 0.5em;
     }
 `
 
 const MenuItem = styled.li`
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    padding: 10px 15px;
+    font-size: ${({ active }) => (active ? '1.2rem' : '1rem')};
+    background-color: ${({ active }) => (active ? '#FFF' : 'transparent')};
+    color: ${({ active }) => (active ? '#6A5FB6' : '#b5b5b5')};
+    font-weight: ${({ active }) => (active ? '600' : 'normal')};
+    border-radius: 5px;
+    transition: all 0.5s;
+
     a {
-        padding: ${({ active }) => (active ? '4px 15px' : '0')};
-        font-size: ${({ active }) => (active ? '1.2rem' : '1rem')};
-        background-color: ${({ active }) => (active ? '#FFF' : 'transparent')};
-        color: ${({ active }) => (active ? '#6A5FB6' : '#b5b5b5')};
-        font-weight: ${({ active }) => (active ? '600' : 'normal')};
-        border-radius: 5px;
+        color: inherit;
+    }
+
+    span {
         transition: all 0.5s;
     }
 
-    a:hover {
+    &:hover{
+        color: #f1f1f1;
         font-size: 1.2rem;
+    
+        span {
+            font-size: 1.7rem;
+        }
     }
 `
 
 const LogOutBtn = styled.button`
     outline: none;
     border: none;
-    padding: 5px 20px;
+    padding: 10px 20px;
     color: #6a5fb6;
-    font-size: 1em;
+    font-size: 1.2em;
     font-weight: 600;
     background-color: #fff;
     border-radius: 10px;
+    transition: all 0.5S;
+
+    &:hover {
+        background-color: #d9d9d9;
+        transform: scale(1.05);
+    }
 `
 
 const SideMenu = () => {
@@ -67,10 +85,10 @@ const SideMenu = () => {
     const handleLogout = async () => await auth.signout()
 
     const menuItems = [
-        { text: 'Dashboard', route: '/gestao' },
-        { text: 'Horários', route: '/gestao/horarios' },
-        { text: 'Salas', route: '/gestao/salas' },
-        { text: 'Suporte', route: '/gestao/suporte' }
+        { text: 'Dashboard', route: '/gestao', icon: 'space_dashboard' },
+        { text: 'Horários', route: '/gestao/horarios', icon: 'schedule' },
+        { text: 'Salas', route: '/gestao/salas', icon: 'school' },
+        { text: 'Suporte', route: '/gestao/suporte', icon: 'help' }
     ]
 
     const toggleMenu = () => setIsOpen(!isOpen)
@@ -82,21 +100,27 @@ const SideMenu = () => {
                     <img src={logomarca} alt="" />
                 </Link>
 
+                <hr/>
+
                 <ul>
                     {menuItems.map((item, index) => (
                         <MenuItem
                             key={index}
                             active={location.pathname === item.route ? 'true' : undefined}
                         >
+                            <span class="material-symbols-outlined">{item.icon}</span> 
                             <Link to={item.route}>{item.text}</Link>
                         </MenuItem>
                     ))}
                 </ul>
             </div>
 
-            {auth.user && (
-                <LogOutBtn onClick={handleLogout}>Sair</LogOutBtn>
-            )}
+            <div>
+                <hr/>
+                {auth.user && (<LogOutBtn onClick={handleLogout}>Sair</LogOutBtn>)}
+            </div>
+            
+            
         </SideMenuContainer>
     )
 }

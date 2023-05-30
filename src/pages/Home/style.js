@@ -90,6 +90,21 @@ export const Title = styled.h1`
     }
 `
 
+export const Title2 = styled.h1`
+    color: #3a3a3a;
+    font-weight: 700;
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+
+    @media (max-width:1000px) {
+        font-size: 2.5rem;
+    }
+
+    @media (max-width:850px) {
+        font-size: 1.75rem;
+    }
+`
+
 export const Subtitle = styled.h2`
     color: #E3E3E3;
     font-size: 1.25rem;

@@ -69,9 +69,7 @@ const Home = () => {
             
             <C.Main >
                 <C.Section>
-                    <C.Title>
-                        Nosso objetivo com você
-                    </C.Title>
+                    <C.Title2>Nosso objetivo com você</C.Title2>
                 </C.Section>
             </C.Main>
         </>
