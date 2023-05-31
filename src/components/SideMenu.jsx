@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 import { Link, useLocation } from 'react-router-dom'
@@ -81,7 +81,6 @@ const LogOutBtn = styled.button`
 const SideMenu = () => {
     const auth = React.useContext(AuthContext)
     const location = useLocation()
-    const [isOpen, setIsOpen] = useState(true)
     const handleLogout = async () => await auth.signout()
 
     const menuItems = [
@@ -90,8 +89,6 @@ const SideMenu = () => {
         { text: 'Salas', route: '/gestao/salas', icon: 'school' },
         { text: 'Suporte', route: '/gestao/suporte', icon: 'help' }
     ]
-
-    const toggleMenu = () => setIsOpen(!isOpen)
 
     return (
         <SideMenuContainer>

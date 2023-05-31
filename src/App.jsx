@@ -1,6 +1,6 @@
 // src/App.jsx
 import React from 'react'
-import { Routes, Route, Link, useNavigate } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import { RequireAuth } from './context/RequireAuth'
 
 import HomeGestao from './pages/Gestao/Dashboard'

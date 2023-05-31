@@ -36,7 +36,7 @@ export const Login = () => {
             if(isLogged) // Se estiver autentificado
                 navigate("/gestao")
             else
-                alert("Email não autentificado, tente novamente")
+                alert("Email ou Senha não autentificado, tente novamente")
         }
     }
 

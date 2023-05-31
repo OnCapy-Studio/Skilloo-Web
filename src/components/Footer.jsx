@@ -1,8 +1,6 @@
 import React from 'react'
 import styled from "styled-components"
-import { Link, useLocation } from 'react-router-dom'
-
-import logotipo from '../assets/img/logotipo.svg'
+import { Link } from 'react-router-dom'
 
 const Container = styled.div`
     display: flex;
@@ -11,8 +9,7 @@ const Container = styled.div`
     align-items: center;
     gap: 2em; 
     padding: 2em;
-    background-color: #584F9B;
-    border-radius: 80px 80px 0 0;
+    background-color: #362d70;
 `
 
 const Sections = styled.nav`

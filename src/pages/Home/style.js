@@ -1,4 +1,4 @@
-import { styled, createGlobalStyle, keyframes } from 'styled-components';
+import { styled, createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
     html, body {
@@ -17,11 +17,10 @@ export const Main = styled.main`
     height: 100%;
 `
 
-export const Container = styled.section`
+export const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     gap: 3em;
     width: 100%;
     max-width: 1200px;
@@ -31,51 +30,36 @@ export const Container = styled.section`
 export const Section = styled.section`
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    gap: 1em;
+    gap: 2em;
     width: 100%;
 
-    p {
-        width: 600px;
-        font-size: 1.5rem;
-        text-align: center  ;
-    }
-`
-
-export const Section2 = styled.section`
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    gap: 1em;
-    width: 100%;
-
-    p {
-        font-size: 1.75rem;
-        text-align: center  ;
+    div {
+        display: flex;
+        width: 100%;
     }
 
-    img {
-        width: 200px;
+    aside {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 100%;
     }
 
     ul {
         display: flex;
         flex-direction: column;
+        gap: 1em;
     }
 
     li {
         display: flex;
-        align-items: center;,
+        align-items: center;
         gap: 1em;
     }
 
     i {
-        font-size: 3rem;
-    }
-
-    .title {
-        color: #FFF;
+        font-size: 2rem;
     }
 `
 
@@ -94,31 +78,63 @@ export const Title = styled.h1`
     }
 `
 
-export const Background = styled.section`
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    padding: 2em;
-    border-radius: 80px;
-    background-color: #6A5FB6;
-    color: #FFF;
+export const GroupCard = styled.div`
+    gap: 2em;
 
-    div {
+    @media(max-width:768px) {
+        flex-direction: column;
+    }
+`
+
+export const Card = styled.div`
+    flex-direction: column;
+    padding: 2em;
+    border-radius: 10px;
+    background-color: #52488C;
+    gap: 2em;   
+
+    h1 {
+        width: 50%;
+    }
+
+    h2 {
+        color: #FFF;
+        font-weight: 600;
+        font-size: 1.75rem;
+    }
+
+    ul {
         display: flex;
-        justify-content: space-around;
+        flex-direction: column;
+        gap: 1em; 
+    }
+
+    li {
+        display: flex;
+        align-items: center;
+        gap: 1em;
     }
 
     img {
-        object-fit: cover;
+        width: 16px;
+    }
+
+    p {
         width: 100%;
-        max-width: 200px;
+        color: #FFF;
+        font-size: 1.2rem;
     }
 `
 
-export const Circle = styled.div`
-    backgroud-color: #6A5FB6;
-    border-radius: 1000px;
-    padding: 1em;
+export const Esquilo = styled.img`
+    width: 200px;
+
+    @media(max-width:768px) {
+        display: none;
+    }
 `
+
+export const Brasil = styled.img`
+    width: 32px;
+`
+

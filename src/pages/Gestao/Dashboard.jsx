@@ -2,7 +2,7 @@
 import React from "react"
 
 import SideMenu from '../../components/SideMenu'
-import Header from '../../components/Header'
+import Header from '../../components/GestaoHeader'
 
 import  "../../Reset.css";
 import * as C from "./style.js";
