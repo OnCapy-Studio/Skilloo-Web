@@ -41,4 +41,4 @@ Esses dados podem ser alterados no arquivo useApi.jsx encontrado na pasta /hooks
   npm start
 ```
 
-![Img](https://github.com/OnCapy-Studio/Skilloo-Web/assets/96017744/d603629f-b8be-4af5-ad89-53aab65c08cc)
+![Group 79](https://github.com/OnCapy-Studio/Skilloo-Web/assets/96017744/8bd7b41a-6b7d-4c66-95ea-295b05e2aab4)
