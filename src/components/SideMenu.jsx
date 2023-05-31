@@ -52,11 +52,11 @@ const MenuItem = styled.li`
     }
 
     &:hover{
-        color: #f1f1f1;
-        font-size: 1.2rem;
+        color: ${({ active }) => (active ? '#6A5FB6' : '#f1f1f1')};
+        font-size: ${({ active }) => (active ? '1.2rem' : '1.2rem')};;
     
         span {
-            font-size: 1.7rem;
+            font-size: ${({ active }) => (active ? '24px' : '1.7rem')};;;
         }
     }
 `

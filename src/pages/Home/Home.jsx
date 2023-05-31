@@ -1,77 +1,70 @@
 // src/Home/Home.jsx
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { AuthContext } from '../../context/AuthContext'
 
-import logomarca from '../../assets/img/logomarca.svg'
-import logotipo from '../../assets/img/logotipo.svg'
-import noz from '../../assets/img/noz.svg'
+import Banner from '../../components/Banner'
+import Footer from '../../components/Footer'
+
+import esquilo from '../../assets/img/esquilo.png'
+import agilidade from '../../assets/img/agilidade.png'
 
 import '../../Reset.css'
 import * as C from "./style.js";
 
 const Home = () => {
-    const auth = React.useContext(AuthContext)
-    const navigate = useNavigate()
-
-    const handleLogout = async () => {
-        await auth.signout() // Chama a função signout() do objeto auth
-        navigate('/') // Redireciona o usuário para a Home
-    }
-
     return (
         <>
-            <C.Background>
-                <C.Header>
-                    <C.Container>
-                        <Link to=""><img src={logomarca} alt="" /></Link>
-
-                        <C.Navigation>
-                            {auth.user ? 
-                                    <Link to="/gestao">Entrar</Link>
-                                :
-                                    <Link to="/gestao">Log In</Link>
-                            }
-                            
-
-                            {auth.user && (
-                                <C.LogOutBtn onClick={handleLogout}>Sair</C.LogOutBtn>
-                            )}
-                        </C.Navigation>
-                    </C.Container>
-                </C.Header>
-
-                <C.Section>
-                    <C.Container>
-                        <C.GroupTitleButton>  
-                            <div>
-                                <C.Title>
-                                    Bem-vindo ao Skilloo
-                                </C.Title>
-
-                                <C.Subtitle>
-                                    Seu sistema favorito de gerenciamento e organização
-                                </C.Subtitle>
-                            </div>
-
-                            <C.AboutUsBtn>
-                                <Link to="https://oncapystudio.netlify.app/#">
-                                    Sobre nozes <C.Icon src={noz} alt="" />
-                                </Link>
-                            </C.AboutUsBtn>
-                            
-                        </C.GroupTitleButton>
-
-                        <C.Logotipo src={logotipo} alt=""/>
-                    </C.Container>
-                </C.Section>
-            </C.Background>
+            <Banner />
             
-            <C.Main >
-                <C.Section>
-                    <C.Title2>Nosso objetivo com você</C.Title2>
-                </C.Section>
+            <C.Main>
+                <C.Container>
+                    <C.Title>O que é o Skilloo?</C.Title>
+                    <C.Section>
+                        <p>
+                            É uma aplicação que foi desenvolvido para auxiliar a 
+                            gestão escolar e os professores no gerenciamento das atividades 
+                            e rotinas escolares.  
+                        </p>
+                    </C.Section>
+
+                    <C.Background>
+                        <C.Title>Nosso objetivo</C.Title>
+                        
+                        <div>
+                            <C.Circle>
+                                <img src={agilidade} alt="" />
+                            </C.Circle>
+
+                            <C.Circle>
+                                <img src={agilidade} alt="" />
+                            </C.Circle>
+
+                            <C.Circle>
+                                <img src={agilidade} alt="" />
+                            </C.Circle>
+                        </div>
+                        
+                    </C.Background>
+
+                    <C.Title>Contato</C.Title>
+                    <C.Section2>
+                        <ul>
+                            <li>
+                                <i className='uil uil-envelope'></i>
+                                <p>skilloo@gmail.com</p>
+                            </li>
+                            <li>
+                                <i className='uil uil-whatsapp'></i>
+                                <p>99 99999-9999</p>
+                            </li>
+                        </ul>
+
+                        <img src={esquilo} alt="" />
+                    </C.Section2>
+
+                </C.Container>
             </C.Main>
+
+            <Footer sections={['O que somos', 'Porque nós', 'Contato']} />
         </>
     )
 }

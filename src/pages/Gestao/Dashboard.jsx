@@ -1,6 +1,5 @@
 // src/pages/HomeGestao/HomeGestao.jsx
 import React from "react"
-import { AuthContext } from "../../context/AuthContext"
 
 import SideMenu from '../../components/SideMenu'
 import Header from '../../components/Header'
