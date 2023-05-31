@@ -1,4 +1,3 @@
-
 # Tutorial de execução da aplicação web
 
 Esta é a primeira versão da home page geral e do gestor do Skilloo web. 
@@ -41,3 +40,5 @@ Esses dados podem ser alterados no arquivo useApi.jsx encontrado na pasta /hooks
 ```bash
   npm start
 ```
+
+![Img](https://github.com/OnCapy-Studio/Skilloo-Web/assets/96017744/d603629f-b8be-4af5-ad89-53aab65c08cc)
