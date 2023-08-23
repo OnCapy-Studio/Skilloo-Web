@@ -3,14 +3,16 @@ import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { RequireAuth } from './context/RequireAuth'
 
-import HomeGestao from './pages/Gestao/Dashboard'
+import Membros from './pages/Gestao/Membros'
 import Home from './pages/Home/Home'
 
 import './Reset.css'
 import styled from "styled-components";
 
 const AppDiv = styled.div`
-        font-family: 'Inter', sans-serif;
+    width: 100%;
+    height: 100%;
+    font-family: 'Inter', sans-serif;
 `
 
 const App = () => {
@@ -18,7 +20,7 @@ const App = () => {
         <AppDiv>
             <Routes>
                 <Route path="/" element={<Home/>}/>
-                <Route path="/gestao" element={<RequireAuth><HomeGestao/></RequireAuth>} />
+                <Route path="/gestao" element={<RequireAuth><Membros/></RequireAuth>} />
             </Routes>
         </AppDiv>
     )

@@ -2,14 +2,19 @@ import React from "react"
 import styled from "styled-components"
 
 const HeaderContainer = styled.header`
-    padding: 2em;
-    background-color: #FFF;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    padding: 2em 3em;
+    background-color: #524994;
+    grid-area: header;
 `
 
 const Title = styled.h1`
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 600;
-    color: #606060;
+    color: #fff;
 `
 
 const Header = ({pageTitle}) => {
@@ -17,7 +22,7 @@ const Header = ({pageTitle}) => {
         <HeaderContainer>
             <Title>{pageTitle}</Title>
         </HeaderContainer>
-    );
+    )
 }
 
 export default Header;

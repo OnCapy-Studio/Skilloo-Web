@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 const Container = styled.div`
     display: flex;
     flex-direction: column;
-    justifi-content: center;
+    justify-content: center;
     align-items: center;
     gap: 2em; 
     padding: 2em;
