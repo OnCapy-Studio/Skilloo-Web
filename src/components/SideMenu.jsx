@@ -71,12 +71,13 @@ const LogoutButton = styled.button`
 `
 
 const SideMenu = () => {
+    const [active, setActive] = React.useState(false)
+    const handleClick = () => setActive(!active)
+
     const auth = React.useContext(AuthContext)
-    const location = useLocation()
     const handleLogout = async () => await auth.signout()
 
-    const [active, useActive] = React.useState(false)
-    const handleClick = () => useActive(!active)
+    const location = useLocation()
 
     const menuItems = [
         { title: 'Membros', route: '', icon: 'person' },
@@ -87,7 +88,7 @@ const SideMenu = () => {
     ]
 
     return (
-        <Container>
+        <Container active={active}>
             <div>
                 <Link to="/gestao"><img src={logomarca} alt="" /></Link>
                 <button onClick={handleClick}>X</button>
@@ -96,21 +97,16 @@ const SideMenu = () => {
                     {menuItems.map((item, index) => (
                         <MenuItem key={index} active={location.pathname === item.route ? 'true' : undefined}>
                             <span className="material-symbols-outlined">{item.icon}</span> 
-
-                            <NavLink to={item.route}>
-                                {item.title}
-                            </NavLink>
+                            <NavLink to={item.route}>{item.title}</NavLink>
                         </MenuItem>
                     ))}
                 </ul>
             </div>
 
-            {auth.user && (
-                <LogoutButton onClick={handleLogout}>
-                    <span className="material-symbols-outlined">logout</span>
-                    Log out
-                </LogoutButton>)
-            }
+            <LogoutButton onClick={handleLogout}>
+                <span className="material-symbols-outlined">logout</span>
+                Log out
+            </LogoutButton>
         </Container>
     )
 }
