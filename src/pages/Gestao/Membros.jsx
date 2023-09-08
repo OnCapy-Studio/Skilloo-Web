@@ -1,10 +1,9 @@
-// src/pages/Gestao/Membros.jsx
-import React from "react"
+import React from 'react'
 
 const Membros = () => {
-    return (
-        <h1>Membros</h1>
-    )
+  return (
+    <div>Membros</div>
+  )
 }
 
 export default Membros

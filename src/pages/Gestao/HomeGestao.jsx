@@ -1,30 +1,29 @@
+// HomeGestao
 import React from "react"
-import { Routes, Route } from "react-router-dom";
-import { styled } from 'styled-components';
-import "../../Reset.css";
+import { Routes, Route } from "react-router-dom"
+import "../../Reset.css"
 
-import SideMenu from '../../components/SideMenu'
+import Sidebar from '../../components/Sidebar/Sidebar.jsx'
 import Header from '../../components/Header'
 
-import Membros from "./Membros";
-import Horarios from "./Horarios";
-
-export const Container = styled.main`
-    display: flex;
-    flex-direction: column;
-`
+import Membros from "./Membros"
+import Horarios from './Horarios'
+import Labs from "./Labs"
+import Turmas from "./Turmas"
+import Materias from "./Materias"
 
 const HomeGestao = () => {
     return (
-        <Container>
-            <SideMenu/>
+        <Sidebar>
             <Header/>
-
             <Routes>
-                <Route path="/" element={<Membros/>}/>
+                <Route path="/membros" element={<Membros/>}/>
                 <Route path="/horarios" element={<Horarios/>}/>
+                <Route path="/labs" element={<Labs/>}/>
+                <Route path="/turmas" element={<Turmas/>}/>
+                <Route path="/materias" element={<Materias/>}/>
             </Routes>
-        </Container>
+        </Sidebar>
     )
 }
 

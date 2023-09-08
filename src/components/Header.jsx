@@ -1,7 +1,10 @@
 import React from "react"
+import { useParams } from "react-router-dom"
 import styled from "styled-components"
 
-const HeaderContainer = styled.header`
+import Head from './Head'
+
+const Container = styled.header`
     display: flex;
     align-items: center;
     width: 100%;
@@ -17,11 +20,18 @@ const Title = styled.h1`
     color: #fff;
 `
 
-const Header = ({pageTitle}) => {
+const Header = () => {
+    const params = useParams()
+    console.log(params)
+
+    const firstLetter = string => string.charAt(0).toUpperCase() + string.slice(1)
+    const formattedId = firstLetter(params['*'])
+
     return (
-        <HeaderContainer>
-            <Title>{pageTitle}</Title>
-        </HeaderContainer>
+        <Container>
+            <Head title={formattedId}/>
+            <Title>{formattedId}</Title>
+        </Container>
     )
 }
 

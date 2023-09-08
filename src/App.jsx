@@ -1,4 +1,4 @@
-// src/App.jsx
+// App
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { RequireAuth } from './context/RequireAuth'
@@ -7,6 +7,7 @@ import HomeGestao from './pages/Gestao/HomeGestao'
 import Home from './pages/Home/Home'
 
 import './Reset.css'
+import './index.css'
 import styled from "styled-components";
 
 const AppDiv = styled.div`
@@ -20,7 +21,7 @@ const App = () => {
         <AppDiv>
             <Routes>
                 <Route path="/" element={<Home/>}/>
-                <Route path="/gestao" element={<RequireAuth><HomeGestao/></RequireAuth>} />
+                <Route path="/:id/*" element={<RequireAuth><HomeGestao/></RequireAuth>} />
             </Routes>
         </AppDiv>
     )

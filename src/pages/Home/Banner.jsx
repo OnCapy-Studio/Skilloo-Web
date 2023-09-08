@@ -2,11 +2,11 @@ import React from 'react'
 import { styled, keyframes } from "styled-components"
 
 import { Link, useNavigate } from 'react-router-dom'
-import { AuthContext } from '../context/AuthContext'
+import { AuthContext } from '../../context/AuthContext'
 
-import logomarca from '../assets/img/logomarca.svg'
-import logotipo from '../assets/img/logotipo.svg'
-import noz from '../assets/img/noz.svg'
+import logomarca from '../../assets/img/logomarca.svg'
+import logotipo from '../../assets/img/logotipo.svg'
+import noz from '../../assets/img/noz.svg'
 
 const BannerContent = styled.div`
     display: flex;
@@ -197,8 +197,8 @@ const Banner = () => {
 
                     <Navigation>
                         {auth.user 
-                            ?<Link to="/gestao">Entrar</Link>
-                            :<Link to="/gestao">Log In</Link>
+                            ?<Link to="/gestao/membros">Entrar</Link>
+                            :<Link to="/gestao/membros">Log In</Link>
                         }
 
                         {auth.user && (

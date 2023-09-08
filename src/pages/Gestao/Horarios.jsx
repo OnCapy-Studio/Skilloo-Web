@@ -1,10 +1,9 @@
-// src/pages/Gestao/Horarios.jsx
 import React from 'react'
 
 const Horarios = () => {
-    return (
-        <h1>Horarios</h1>
-    )
+  return (
+    <div>Horarios</div>
+  )
 }
 
 export default Horarios

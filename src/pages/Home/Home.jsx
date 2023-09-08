@@ -1,8 +1,8 @@
 // src/Home/Home.jsx
 import React from 'react'
 
-import Banner from '../../components/Banner'
-import Footer from '../../components/Footer'
+import Banner from './Banner'
+import Footer from './Footer'
 
 import esquilo from '../../assets/img/esquilo.png'
 import check from '../../assets/img/check.png'
