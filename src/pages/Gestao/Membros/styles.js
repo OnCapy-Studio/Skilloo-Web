@@ -33,8 +33,10 @@ export const Table = styled.table`
     }
 
     td {
+        text-align: center;
         vertical-align: middle;
         padding: 1em;
+        gap: 1em;
     }
 
     td div {
@@ -55,9 +57,11 @@ export const Hour = styled.button`
 `
 
 export const Edit = styled.button`
+    background-color: transparent;
     border: 0;
     outline: none;
     color: #666;
+    margin: 0 0 0 1em;
 `
 
 export const Tags = styled.div``
