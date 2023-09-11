@@ -11,30 +11,37 @@ const Sidebar = ({children}) => {
     const auth = React.useContext(AuthContext)
     const handleLogout = async () => await auth.signout()
 
+    const [open, setOpen] = React.useState(false)
+    const toggle = () => setOpen(!open)
+
     return (
         <C.Screen>
-            <C.Menu>
+            <C.Menu open={open}>
                 <nav>
                     <C.TopSection>
-                        <Link to="/gestao/membros"><img src={logomarca} alt="" /></Link>
-                        <C.Bars className="material-symbols-outlined">menu</C.Bars>
+                        <C.ToggleBtn className="material-symbols-outlined" onClick={toggle}>
+                            {open?'close' :'menu'}
+                        </C.ToggleBtn>
+
+                        <Link to="/"><img src={logomarca} alt="" /></Link>
                     </C.TopSection>
 
                     {SidebarData.map((item, index) => (
                         <NavLink to={'/gestao/'+item.path} key={index}>
+                            <C.Bar></C.Bar>
                             <span className="material-symbols-outlined">{item.icon}</span> 
                             <h1>{item.title}</h1>
                         </NavLink>
                     ))}
                 </nav>
 
-                <C.Logout onClick={handleLogout}>
+                <C.Logout onClick={handleLogout} open={open}>
                     <span className="material-symbols-outlined">logout</span>
                     <h1>Log out</h1>
                 </C.Logout>
             </C.Menu>
 
-            <main>{children}</main>
+            <C.Main>{children}</C.Main>
         </C.Screen>
     )
 }

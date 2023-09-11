@@ -6,7 +6,7 @@ import "../../Reset.css"
 import Sidebar from '../../components/Sidebar/Sidebar.jsx'
 import Header from '../../components/Header'
 
-import Membros from "./Membros"
+import Membros from "./Membros/Membros"
 import Horarios from './Horarios'
 import Labs from "./Labs"
 import Turmas from "./Turmas"

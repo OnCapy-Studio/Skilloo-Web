@@ -11,7 +11,6 @@ const Container = styled.header`
     height: 100px;
     padding: 2em 3em;
     background-color: #524994;
-    grid-area: header;
 `
 
 const Title = styled.h1`
@@ -22,7 +21,6 @@ const Title = styled.h1`
 
 const Header = () => {
     const params = useParams()
-    console.log(params)
 
     const firstLetter = string => string.charAt(0).toUpperCase() + string.slice(1)
     const formattedId = firstLetter(params['*'])

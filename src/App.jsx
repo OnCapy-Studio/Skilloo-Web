@@ -7,7 +7,6 @@ import HomeGestao from './pages/Gestao/HomeGestao'
 import Home from './pages/Home/Home'
 
 import './Reset.css'
-import './index.css'
 import styled from "styled-components";
 
 const AppDiv = styled.div`
