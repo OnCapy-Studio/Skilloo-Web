@@ -1,30 +1,35 @@
 //SidebarData
 const SidebarData = [
-    {
-        title: 'Membros',
-        path: 'membros',
-        icon: 'person',
-    },
-    {
-        title: 'Horários',
-        path: 'horarios',
-        icon: 'schedule',
-    },
-    {
-        title: 'Labs',
-        path: 'labs',
-        icon: 'school',
-    },
-    {
-        title: 'Turmas',
-        path: 'turmas',
-        icon: 'group',
-    },
-    {
-        title: 'Matérias',
-        path: 'materias',
-        icon: 'grid_view',
-    }
-]
+  {
+    title: 'Membros',
+    path: 'membros',
+    icon: 'person',
+  },
+  {
+    title: 'Horários',
+    path: 'horarios',
+    icon: 'schedule',
+  },
+  {
+    title: 'Labs',
+    path: 'labs',
+    icon: 'school',
+  },
+  {
+    title: 'Turmas',
+    path: 'turmas',
+    icon: 'group',
+  },
+  {
+    title: 'Matérias',
+    path: 'materias',
+    icon: 'grid_view',
+  },
+  {
+    title: 'Suporte',
+    path: 'suporte',
+    icon: 'grid_view',
+  },
+];
 
-export default SidebarData
+export default SidebarData;
