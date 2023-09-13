@@ -1,5 +1,5 @@
 // HomeGestao
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import '../../Reset.css';
 

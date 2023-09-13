@@ -23,11 +23,11 @@ const Turmas = () => {
   }
 
   useEffect(() => {
+    const token = localStorage.getItem('authToken');
     axios
       .get(`${BASE_URL}/turmas?size=5&page=${pageNumber}`, {
         headers: {
-          Authorization:
-            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJza2lsbG9vLWFwaSIsInN1YiI6ImV0ZWNkZWl0YXF1ZXJhQGV0ZWMuc3AuZ292LmJyIiwiSWQiOjF9.uRw8BhPDNORi0ET7Vnd3914eyZ39FvK2iwLBEc4KkHg',
+          Authorization: token,
         },
       })
       .then((response) => {

@@ -34,7 +34,6 @@ const Membros = () => {
 
   useEffect(() => {
     const token = localStorage.getItem('authToken');
-    console.log(token);
 
     axios
       .get(`${BASE_URL}/professores?size=5&page=${pageNumber}`, {
