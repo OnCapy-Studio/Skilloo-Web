@@ -7,9 +7,8 @@ import { BASE_URL } from '../../../context/requests'
 import Pagination from '../../../components/Pagination'
 import TableData from '../../../components/Table/TableData'
 
-
-const Membros = () => {
-    const [professores, setProfessores] = useState({
+const Turmas = () => {
+    const [turmas, setTurmas] = useState({
         content: [],
         last: true,
         totalPages: 0,
@@ -27,24 +26,24 @@ const Membros = () => {
     useEffect(() => {
         const token = localStorage.getItem('authToken')
 
-        axios.get(`${BASE_URL}/professores?size=4&page=${pageNumber}`, {
+        axios.get(`${BASE_URL}/turmas?size=3&page=${pageNumber}`, {
             headers: {
-                Authorization: token,
+                Authorization: token,     
             },
-        }).then((response) => {setProfessores(response.data)})
+        }).then((response) => {setTurmas(response.data)})
     }, [pageNumber])
 
     return (
         <C.Container>
             <TableData 
-                head={['Membros', 'Ações']}
-                data={professores}
-                icon={'person'}
+                head={['Turmas', 'Ações']}
+                data={turmas}
+                icon={'computer'}
             />
-            
-            <Pagination dados={professores} onChange={handlePageChange}/>
+
+            <Pagination dados={turmas} onChange={handlePageChange} />
         </C.Container>
-    )
+    ) 
 }
 
-export default Membros
+export default Turmas

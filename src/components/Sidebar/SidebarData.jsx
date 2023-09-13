@@ -28,7 +28,7 @@ const SidebarData = [
   {
     title: 'Suporte',
     path: 'suporte',
-    icon: 'grid_view',
+    icon: 'help',
   },
 ];
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import * as C from './styles'
 
 import axios from 'axios'
@@ -7,9 +7,8 @@ import { BASE_URL } from '../../../context/requests'
 import Pagination from '../../../components/Pagination'
 import TableData from '../../../components/Table/TableData'
 
-
-const Membros = () => {
-    const [professores, setProfessores] = useState({
+const Labs = () => {
+    const [labs, setLabs] = useState({
         content: [],
         last: true,
         totalPages: 0,
@@ -21,30 +20,30 @@ const Membros = () => {
         empty: true,
     })
 
-    const [pageNumber, setPageNumber] = useState(0)
+    const [pageNumber, setPageNumber] = useState(0);
     const handlePageChange = newPageNumber => setPageNumber(newPageNumber)
 
     useEffect(() => {
         const token = localStorage.getItem('authToken')
 
-        axios.get(`${BASE_URL}/professores?size=4&page=${pageNumber}`, {
+        axios.get(`${BASE_URL}/labs?size=4&page=${pageNumber}`, {
             headers: {
                 Authorization: token,
             },
-        }).then((response) => {setProfessores(response.data)})
+        }).then(response => {setLabs(response.data)})
     }, [pageNumber])
 
     return (
         <C.Container>
             <TableData 
-                head={['Membros', 'Ações']}
-                data={professores}
-                icon={'person'}
+                head={['Labs', 'Ações']}
+                data={labs}
+                icon={'chair_alt'}
             />
-            
-            <Pagination dados={professores} onChange={handlePageChange}/>
+
+            <Pagination dados={labs} onChange={handlePageChange} />
         </C.Container>
     )
 }
 
-export default Membros
+export default Labs

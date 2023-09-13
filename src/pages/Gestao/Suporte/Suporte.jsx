@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import * as C from './styles'
-
 import axios from 'axios'
 import { BASE_URL } from '../../../context/requests'
 
 import Pagination from '../../../components/Pagination'
-import TableData from '../../../components/Table/TableData'
 
-
-const Membros = () => {
-    const [professores, setProfessores] = useState({
+const Suporte = () => {
+    const [tickets, setTickets] = useState({
         content: [],
         last: true,
         totalPages: 0,
@@ -27,24 +24,29 @@ const Membros = () => {
     useEffect(() => {
         const token = localStorage.getItem('authToken')
 
-        axios.get(`${BASE_URL}/professores?size=4&page=${pageNumber}`, {
+        axios.get(`${BASE_URL}/suporte/allTickets?size=10&page=${pageNumber}`, {
             headers: {
                 Authorization: token,
             },
-        }).then((response) => {setProfessores(response.data)})
+        }).then((response) => {setTickets(response.data)})
     }, [pageNumber])
 
-    return (
+  return (
         <C.Container>
-            <TableData 
-                head={['Membros', 'Ações']}
-                data={professores}
-                icon={'person'}
-            />
-            
-            <Pagination dados={professores} onChange={handlePageChange}/>
+            <table>
+                {tickets.content.map((item) => (
+                <tr key={item.id}>
+                    <td>{item.titulo}</td>
+                    <td>{item.lab}</td>
+                    <td>{item.descricao}</td>
+                    <td>{item.status}</td>
+                </tr>
+                ))}
+            </table>
+
+            <Pagination dados={tickets} onChange={handlePageChange} />
         </C.Container>
     )
 }
 
-export default Membros
+export default Suporte

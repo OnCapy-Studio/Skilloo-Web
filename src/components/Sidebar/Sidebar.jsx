@@ -4,6 +4,8 @@ import { NavLink, Link } from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContext'
 
 import * as C from "./styles"
+import GlobalStyle from '../../pages/Gestao/GlobalStyle'
+
 import SidebarData from './SidebarData'
 import logomarca from '../../assets/img/logomarca.svg'
 
@@ -16,6 +18,7 @@ const Sidebar = ({children}) => {
 
     return (
         <C.Screen>
+            <GlobalStyle />
             <C.Menu open={open}>
                 <nav>
                     <C.TopSection>
