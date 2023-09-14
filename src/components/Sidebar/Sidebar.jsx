@@ -9,6 +9,9 @@ import GlobalStyle from '../../pages/Gestao/GlobalStyle'
 import SidebarData from './SidebarData'
 import logomarca from '../../assets/img/logomarca.svg'
 
+import { FaBars } from 'react-icons/fa'
+import { IoClose } from 'react-icons/io5'
+
 const Sidebar = ({children}) => {
     const auth = React.useContext(AuthContext)
     const handleLogout = async () => await auth.signout()
@@ -22,17 +25,13 @@ const Sidebar = ({children}) => {
             <C.Menu open={open}>
                 <nav>
                     <C.TopSection>
-                        <C.ToggleBtn className="material-symbols-outlined" onClick={toggle}>
-                            {open?'close' :'menu'}
-                        </C.ToggleBtn>
-
-                        <Link to="/"><img src={logomarca} alt="" /></Link>
+                        {open? <IoClose onClick={toggle}/> :<FaBars onClick={toggle}/>}
+                        {open? <Link to="/"><img src={logomarca} alt="" /></Link>: ''}
                     </C.TopSection>
 
                     {SidebarData.map((item, index) => (
                         <NavLink to={'/gestao/'+item.path} key={index}>
-                            <C.Bar></C.Bar>
-                            <span className="material-symbols-outlined">{item.icon}</span> 
+                            <C.Icon>{item.icon}</C.Icon>
                             <h1>{item.title}</h1>
                         </NavLink>
                     ))}

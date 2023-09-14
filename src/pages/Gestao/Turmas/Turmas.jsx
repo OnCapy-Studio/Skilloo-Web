@@ -6,8 +6,11 @@ import { BASE_URL } from '../../../context/requests'
 
 import Pagination from '../../../components/Pagination'
 import TableData from '../../../components/Table/TableData'
+import { IoSchool } from 'react-icons/io5'
 
 const Turmas = () => {
+    const iconTag = <IoSchool />
+
     const [turmas, setTurmas] = useState({
         content: [],
         last: true,
@@ -38,7 +41,7 @@ const Turmas = () => {
             <TableData 
                 head={['Turmas', 'Ações']}
                 data={turmas}
-                icon={'computer'}
+                icon={iconTag}
             />
 
             <Pagination dados={turmas} onChange={handlePageChange} />

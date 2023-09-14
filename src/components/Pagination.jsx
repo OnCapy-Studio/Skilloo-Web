@@ -27,8 +27,8 @@ function Pagination({ dados, onChange }) {
     return (
         <Container>
             <Button
-            disabled={dados.first}
-            onClick={() => onChange(dados.number - 1)}
+                disabled={dados.first}
+                onClick={() => onChange(dados.number - 1)}
             >
             &lt;
             </Button>
@@ -38,8 +38,8 @@ function Pagination({ dados, onChange }) {
             </Text>
                 
             <Button
-            disabled={dados.last}
-            onClick={() => onChange(dados.number + 1)}
+                disabled={dados.last}
+                onClick={() => onChange(dados.number + 1)}
             >
             &gt;
             </Button>

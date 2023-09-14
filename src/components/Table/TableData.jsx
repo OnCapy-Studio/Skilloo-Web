@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
 import * as C from './styles'
+
 import PopUpView from '../View/PopUpView'
+
+import {HiMiniPencil} from 'react-icons/hi2'
+import {IoMdTrash} from 'react-icons/io'
 
 const Table = ({head, data, icon}) => {
     const [openView, setOpenView] = useState(false)
@@ -12,51 +16,37 @@ const Table = ({head, data, icon}) => {
     }
 
     return (
-    <>
-        <C.Table>
-            <thead>
-                <tr>
-                    {head && head.map(item => (
-                        <C.Th>{item}</C.Th>
-                    ))}
-                </tr>
-            </thead>
-            <tbody>
-                {data.content.map((item, index) => (
-                    <tr key={index}>
-                        <C.Td>
-                            <div>
-                                <C.ScreenIcon 
-                                    className="material-symbols-outlined"
-                                >
-                                    {icon}
-                                </C.ScreenIcon>
-                                {item.nome}
-                            </div>
-                        </C.Td>
-                        <C.Td>
-                            <C.Actions>
-                                <C.VisibilityIcon 
-                                    className="material-symbols-outlined" 
-                                    onClick={() => toggleView(item)}
-                                >
-                                    visibility
-                                </C.VisibilityIcon>
-
-                                <C.DeleteIcon 
-                                    className="material-symbols-outlined"
-                                >
-                                    delete
-                                </C.DeleteIcon>
-                            </C.Actions>
-                        </C.Td>
+        <>
+            <C.Table>
+                <thead>
+                    <tr>
+                        {head && head.map(item => (
+                            <C.Th>{item}</C.Th>
+                        ))}
                     </tr>
-                ))}
-            </tbody>
-        </C.Table>
-        
-        {openView && <PopUpView memberData={viewMemberData} onClose={toggleView}/>}
-    </>
+                </thead>
+                <tbody>
+                    {data.content.map((item, index) => (
+                        <tr key={index}>
+                            <C.Td>
+                                <div>
+                                    <C.ScreenIcon>{icon}</C.ScreenIcon>
+                                    {item.nome}
+                                </div>
+                            </C.Td>
+                            <C.Td>
+                                <C.Actions>
+                                    <HiMiniPencil onClick={() => toggleView({...item})}/>
+                                    <IoMdTrash/>
+                                </C.Actions>
+                            </C.Td>
+                        </tr>
+                    ))}
+                </tbody>
+            </C.Table>
+            
+            {openView && <PopUpView memberData={viewMemberData} onClose={toggleView}/>}
+        </>
     )
 }
 

@@ -30,6 +30,17 @@ export const Td = styled.td`
         gap: 1em;
         height: 100%;
     }
+
+    svg {
+        width: 24px;
+        height: auto;
+        color: #FF1F00;
+        cursor: pointer;
+    }
+
+    svg:first-child {
+        color: #666;
+    }
 `
 
 export const Actions = styled.div`
@@ -40,18 +51,4 @@ export const Actions = styled.div`
 export const ScreenIcon = styled.span`
     background-color: transparent;
     color: #666;
-`
-
-export const VisibilityIcon = styled.button`
-    background-color: transparent;
-    border: 0;
-    outline: none;
-    color: #666;
-`
-
-export const DeleteIcon = styled.button`
-    background-color: transparent;
-    border: 0;
-    outline: none;
-    color: #FF1F00;
 `

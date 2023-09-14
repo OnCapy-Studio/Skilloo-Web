@@ -4,11 +4,13 @@ import * as C from './styles'
 import axios from 'axios'
 import { BASE_URL } from '../../../context/requests'
 
+import { BsPersonFill } from 'react-icons/bs'
 import Pagination from '../../../components/Pagination'
 import TableData from '../../../components/Table/TableData'
 
-
 const Membros = () => {
+    const iconTag = <BsPersonFill/>
+
     const [professores, setProfessores] = useState({
         content: [],
         last: true,
@@ -39,7 +41,7 @@ const Membros = () => {
             <TableData 
                 head={['Membros', 'Ações']}
                 data={professores}
-                icon={'person'}
+                icon={iconTag} 
             />
             
             <Pagination dados={professores} onChange={handlePageChange}/>

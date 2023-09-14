@@ -35,15 +35,13 @@ export const Menu = styled.aside`
 
     a:hover {
         background-color: #524994;
-        div {background-color: #CCC4FF;}
     }
 
     .active {
         background-color: ${(props) => (props.open? 'transparent': '#524994')};
         padding: ${(props) => (props.open? '1em 3em 1em 1em': '1em 2em 1em 1em')} ;
         font-weight: bold;
-
-        div {background-color: #CCC4FF;}
+        
         h1 {font-weight: 600;}
     }
 `
@@ -55,17 +53,17 @@ export const TopSection = styled.div`
     gap: 1em;
     margin: 2em 1em 5em;
 
-    a {
-        padding: 0;
+    a { padding: 0; }
+
+    svg {
+        width: 32px;
+        height: 32px;
+        color: #FFF;
+        cursor: pointer;
     }
 
-    img {
-        width: 100%;
-    }
-
-    a:hover {
-        background-color: initial;
-    }
+    img { width: 100%; }
+    a:hover { background-color: initial; }
 `   
 
 export const ToggleBtn = styled.span`
@@ -77,13 +75,11 @@ export const ToggleBtn = styled.span`
     }
 `
 
-export const Bar = styled.div`
-    position: relative;
-    right: 15px;
-    width: 10px;
-    border-radius:0 5px 5px 0;
-    height: 20px;
-    transition: all 0.2s;
+export const Icon = styled.span`
+    svg {
+        width: 22px;
+        height: 22px;
+    }
 `
 
 export const Logout = styled.button`
@@ -102,8 +98,8 @@ export const Logout = styled.button`
     transition: all 0.2s;
 
     :hover {
-        background-color: #FF1F00;
-        color: #FFF;
+        background-color: #fff;
+        color: #FF1F00;
     }
 
     h1 {

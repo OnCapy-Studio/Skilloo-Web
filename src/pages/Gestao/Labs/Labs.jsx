@@ -6,8 +6,11 @@ import { BASE_URL } from '../../../context/requests'
 
 import Pagination from '../../../components/Pagination'
 import TableData from '../../../components/Table/TableData'
+import { MdComputer } from 'react-icons/md'
 
 const Labs = () => {
+    const iconTag = <MdComputer/>
+
     const [labs, setLabs] = useState({
         content: [],
         last: true,
@@ -38,7 +41,7 @@ const Labs = () => {
             <TableData 
                 head={['Labs', 'Ações']}
                 data={labs}
-                icon={'chair_alt'}
+                icon={iconTag}
             />
 
             <Pagination dados={labs} onChange={handlePageChange} />

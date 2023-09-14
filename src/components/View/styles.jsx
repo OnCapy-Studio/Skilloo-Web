@@ -23,27 +23,27 @@ export const Frame = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1em;
+    gap: 1.5em;
     padding: 2em;
     width: 700px;
 `
 
 export const TopSection = styled.section`
     display: flex;
+    align-items: center;
     justify-content: space-between;
     width: 100%;
+
+    svg {
+        width: 32px;
+        height: 32px;
+        cursor: pointer;
+    }
 `
 
 export const Title = styled.h1`
     font-size: 1.5rem;
     font-weight: 600;
-`
-
-export const Close = styled.button`
-    color: #000;
-    background-color: transparent;
-    border: none;
-    outline: none;
 `
 
 export const Form = styled.form`
@@ -52,4 +52,20 @@ export const Form = styled.form`
     grid-template-columns: 1fr 1fr 1fr;
     width: 100%;
     max-height: 500px;
+`
+
+export const BottomSection = styled.section`
+    display: flex;
+`
+
+export const SubmitBtn = styled.button`
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    background-color: #6a5fb6;
+    color: #fff;
+    padding: 1em 1.5em;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
 `

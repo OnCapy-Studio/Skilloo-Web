@@ -6,8 +6,11 @@ import { BASE_URL } from '../../../context/requests'
 
 import Pagination from '../../../components/Pagination'
 import TableData from '../../../components/Table/TableData'
+import { TbGridDots } from 'react-icons/tb'
 
 const Materias = () => {
+    const iconTag = <TbGridDots />
+
     const [materias, setMaterias] = useState({
         content: [],
         last: true,
@@ -38,7 +41,7 @@ const Materias = () => {
             <TableData 
                 head={['Materias', 'Ações']}
                 data={materias}
-                icon={'apps'}
+                icon={iconTag}
             />
 
             <Pagination dados={materias} onChange={handlePageChange} />
