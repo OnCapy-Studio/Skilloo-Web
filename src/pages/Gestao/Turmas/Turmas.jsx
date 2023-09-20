@@ -1,52 +1,76 @@
-import React, { useEffect, useState } from 'react'
-import * as C from './styles'
+import React, { useEffect, useState } from 'react';
+import * as C from '../styles';
 
-import axios from 'axios'
-import { BASE_URL } from '../../../context/requests'
-
-import Pagination from '../../../components/Pagination'
-import TableData from '../../../components/Table/TableData'
-import { IoSchool } from 'react-icons/io5'
+import axios from 'axios';
+import { BASE_URL } from '../../../context/requests';
+import TableData from '../../../components/Table/TableData';
+import { IoSchool } from 'react-icons/io5';
+import BtPost from '../../../components/NavegationData/BtPost/BtPost';
+import Pagination from '../../../components/NavegationData/Pagination/Pagination';
 
 const Turmas = () => {
-    const iconTag = <IoSchool />
+  const iconTag = <IoSchool />;
+  const [reload, setReload] = useState(false);
 
-    const [turmas, setTurmas] = useState({
-        content: [],
-        last: true,
-        totalPages: 0,
-        totalElements: 0,
-        size: 12,
-        number: 0,
-        first: true,
-        numberOfElements: 0,
-        empty: true,
-    })
+  const onReload = () => {
+    setReload(!reload);
+  };
 
-    const [pageNumber, setPageNumber] = useState(0)
-    const handlePageChange = newPageNumber => setPageNumber(newPageNumber)
+  const [turmas, setTurmas] = useState({
+    content: [],
+    last: true,
+    totalPages: 0,
+    totalElements: 0,
+    size: 12,
+    number: 0,
+    first: true,
+    numberOfElements: 0,
+    empty: true,
+  });
 
-    useEffect(() => {
-        const token = localStorage.getItem('authToken')
+  const [pageNumber, setPageNumber] = useState(0);
+  const handlePageChange = (newPageNumber) => setPageNumber(newPageNumber);
 
-        axios.get(`${BASE_URL}/turmas?size=3&page=${pageNumber}`, {
-            headers: {
-                Authorization: token,     
-            },
-        }).then((response) => {setTurmas(response.data)})
-    }, [pageNumber])
+  useEffect(() => {
+    const token = localStorage.getItem('authToken');
 
-    return (
-        <C.Container>
-            <TableData 
-                head={['Turmas', 'Ações']}
-                data={turmas}
-                icon={iconTag}
-            />
+    axios
+      .get(`${BASE_URL}/turmas?size=5&page=${pageNumber}`, {
+        headers: {
+          Authorization: token,
+        },
+      })
+      .then((response) => {
+        setTurmas(response.data);
+      });
+  }, [pageNumber, reload]);
 
-            <Pagination dados={turmas} onChange={handlePageChange} />
-        </C.Container>
-    ) 
-}
+  return (
+    <C.Section>
+      <C.Container>
+        <C.Title>Turmas</C.Title>
+        <C.Subtitle>
+          Confira as turmas cadastradas na sua unidade escolar
+        </C.Subtitle>
+        <TableData
+          head={['', 'Id', 'Turmas', 'Periodo', 'Ações']}
+          data={turmas}
+          icon={iconTag}
+          url={'/turmas'}
+          reloadController={onReload}
+        />
 
-export default Turmas
+        <C.DivNavegation>
+          <Pagination dados={turmas} onChange={handlePageChange} />
+          <BtPost
+            url={'/turmas'}
+            onReload={onReload}
+            fields={{ nome: '', periodo: '' }}
+          />
+        </C.DivNavegation>
+      </C.Container>
+    </C.Section>
+  );
+};
+
+export default Turmas;

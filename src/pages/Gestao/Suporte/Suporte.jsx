@@ -1,52 +1,75 @@
-import React, { useEffect, useState } from 'react'
-import * as C from './styles'
-import axios from 'axios'
-import { BASE_URL } from '../../../context/requests'
-
-import Pagination from '../../../components/Pagination'
+import React, { useEffect, useState } from 'react';
+import * as C from '../styles';
+import axios from 'axios';
+import { BASE_URL } from '../../../context/requests';
+import TableData from '../../../components/Table/TableData';
+import Pagination from '../../../components/NavegationData/Pagination/Pagination';
+import { MdOutlineReportProblem } from 'react-icons/md';
+import BtPost from '../../../components/NavegationData/BtPost/BtPost';
 
 const Suporte = () => {
-    const [tickets, setTickets] = useState({
-        content: [],
-        last: true,
-        totalPages: 0,
-        totalElements: 0,
-        size: 12,
-        number: 0,
-        first: true,
-        numberOfElements: 0,
-        empty: true,
-    })
+  const iconTag = <MdOutlineReportProblem />;
 
-    const [pageNumber, setPageNumber] = useState(0)
-    const handlePageChange = newPageNumber => setPageNumber(newPageNumber)
+  const [reload, setReload] = useState(false);
 
-    useEffect(() => {
-        const token = localStorage.getItem('authToken')
+  const onReload = () => {
+    setReload(!reload);
+  };
 
-        axios.get(`${BASE_URL}/suporte/allTickets?size=10&page=${pageNumber}`, {
-            headers: {
-                Authorization: token,
-            },
-        }).then((response) => {setTickets(response.data)})
-    }, [pageNumber])
+  const [tickets, setTickets] = useState({
+    content: [],
+    last: true,
+    totalPages: 0,
+    totalElements: 0,
+    size: 12,
+    number: 0,
+    first: true,
+    numberOfElements: 0,
+    empty: true,
+  });
+
+  const [pageNumber, setPageNumber] = useState(0);
+  const handlePageChange = (newPageNumber) => setPageNumber(newPageNumber);
+
+  useEffect(() => {
+    const token = localStorage.getItem('authToken');
+
+    axios
+      .get(`${BASE_URL}/suporte/allTickets?size=5&page=${pageNumber}`, {
+        headers: {
+          Authorization: token,
+        },
+      })
+      .then((response) => {
+        setTickets(response.data);
+      });
+  }, [pageNumber, reload]);
 
   return (
-        <C.Container>
-            <table>
-                {tickets.content.map((item) => (
-                <tr key={item.id}>
-                    <td>{item.titulo}</td>
-                    <td>{item.lab}</td>
-                    <td>{item.descricao}</td>
-                    <td>{item.status}</td>
-                </tr>
-                ))}
-            </table>
+    <C.Section>
+      <C.Container>
+        <C.Title>Suporte</C.Title>
+        <C.Subtitle>
+          Confira os problemas a serem resolvidos na sua unidade escolar
+        </C.Subtitle>
+        <TableData
+          head={['', 'Id', 'Titulo', 'Lab', 'Descriçao', 'Status', 'Autor']}
+          data={tickets}
+          icon={iconTag}
+          url={'/suporte'}
+          reloadController={onReload}
+        />
+        <C.DivNavegation>
+          <Pagination dados={tickets} onChange={handlePageChange} />
+          <BtPost
+            url={'/suporte'}
+            onReload={onReload}
+            fields={{ titulo: '', lab: '', descricao: '', status: '' }}
+          />
+        </C.DivNavegation>
+      </C.Container>
+    </C.Section>
+  );
+};
 
-            <Pagination dados={tickets} onChange={handlePageChange} />
-        </C.Container>
-    )
-}
-
-export default Suporte
+export default Suporte;

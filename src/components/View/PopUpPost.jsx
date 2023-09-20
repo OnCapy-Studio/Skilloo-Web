@@ -8,9 +8,9 @@ import axios from 'axios';
 import { BASE_URL } from '../../context/requests';
 import { Navigate } from 'react-router-dom';
 
-const PopUpEdit = ({ memberData, onClose, reloadController, url, id }) => {
+const PopUpPost = ({ fields, onClose, reloadController, url }) => {
   // Criando um estado de objeto com as propriedades do membro
-  const [formData, setFormData] = useState({ ...memberData });
+  const [formData, setFormData] = useState({ ...fields });
 
   // Função para atualizar um valor específico no objeto de estado
   const handleChange = (property, value) => {
@@ -20,17 +20,17 @@ const PopUpEdit = ({ memberData, onClose, reloadController, url, id }) => {
     });
   };
 
-  const updateRequest = (url, id, dados) => {
+  const postRequest = (url, dados) => {
     const token = localStorage.getItem('authToken');
 
     axios
-      .put(`${BASE_URL}${url}/${id}`, dados, {
+      .post(`${BASE_URL}${url}`, dados, {
         headers: {
           Authorization: token,
         },
       })
       .then(() => {
-        alert('Dados atualizados com sucesso!');
+        alert('Dados inseridos com sucesso!');
         reloadController();
       })
       .catch((e) => alert(e));
@@ -50,7 +50,6 @@ const PopUpEdit = ({ memberData, onClose, reloadController, url, id }) => {
               key={key}
               label={key}
               type="text"
-              value={formData[key]}
               onChange={(e) => handleChange(key, e.target.value)}
               placeholder=""
             />
@@ -60,7 +59,7 @@ const PopUpEdit = ({ memberData, onClose, reloadController, url, id }) => {
         <C.BottomSection>
           <C.SubmitBtn
             onClick={() => {
-              updateRequest(url, id, formData);
+              postRequest(url, formData);
               onClose(formData);
             }}
           >
@@ -72,4 +71,4 @@ const PopUpEdit = ({ memberData, onClose, reloadController, url, id }) => {
   );
 };
 
-export default PopUpEdit;
+export default PopUpPost;

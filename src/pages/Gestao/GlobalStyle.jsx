@@ -11,6 +11,6 @@ const GlobalStyle = createGlobalStyle`
         height: 100%;
         background-color: #f1f1f1;
     }
-`
+`;
 
-export default GlobalStyle
+export default GlobalStyle;
