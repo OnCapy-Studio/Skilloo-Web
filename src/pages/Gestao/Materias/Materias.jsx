@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import * as C from '../styles';
+import React, { useEffect, useState } from "react";
+import * as C from "../styles";
 
-import axios from 'axios';
-import { BASE_URL } from '../../../context/requests';
+import axios from "axios";
+import { BASE_URL } from "../../../context/requests";
 
-import Pagination from '../../../components/NavegationData/Pagination/Pagination';
-import TableData from '../../../components/Table/TableData';
-import { TbGridDots } from 'react-icons/tb';
-import BtPost from '../../../components/NavegationData/BtPost/BtPost';
+import Pagination from "../../../components/NavegationData/Pagination/Pagination";
+import TableData from "../../../components/Table/TableData";
+import { TbGridDots } from "react-icons/tb";
+import BtPost from "../../../components/NavegationData/BtPost/BtPost";
+import TableMaterias from "./TableMaterias";
+import { AiFillPlusCircle } from "react-icons/ai";
+import AddMateria from "./Popup/Add/AddMateria";
 
 const Materias = () => {
   const iconTag = <TbGridDots />;
@@ -34,7 +37,7 @@ const Materias = () => {
   const handlePageChange = (newPageNumber) => setPageNumber(newPageNumber);
 
   useEffect(() => {
-    const token = localStorage.getItem('authToken');
+    const token = localStorage.getItem("authToken");
 
     axios
       .get(`${BASE_URL}/materias?size=5&page=${pageNumber}`, {
@@ -47,6 +50,12 @@ const Materias = () => {
       });
   }, [pageNumber, reload]);
 
+  const [openViewPost, setOpenViewPost] = useState(false);
+
+  const toggleView = () => {
+    setOpenViewPost(!openViewPost);
+  };
+
   return (
     <C.Section>
       <C.Container>
@@ -54,21 +63,17 @@ const Materias = () => {
         <C.Subtitle>
           Confira as matérias cadastradas na sua unidade escolar
         </C.Subtitle>
-        <TableData
-          head={['', 'Id', 'Materias', 'Area', 'Ações']}
-          data={materias}
-          icon={iconTag}
-          url={'/materias'}
-          reloadController={onReload}
-        />
+        <TableMaterias data={materias} reloadController={onReload} />
 
         <C.DivNavegation>
           <Pagination dados={materias} onChange={handlePageChange} />
-          <BtPost
-            url={'/materias'}
-            onReload={onReload}
-            fields={{ nome: '', area: '' }}
-          />
+          <C.Button>
+            <AiFillPlusCircle onClick={toggleView} />
+          </C.Button>
+
+          {openViewPost && (
+            <AddMateria onClose={toggleView} reloadController={onReload} />
+          )}
         </C.DivNavegation>
       </C.Container>
     </C.Section>

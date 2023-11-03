@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   BannerContent,
   Header,
@@ -15,14 +15,14 @@ import {
   ContainerButtons,
   StartNow,
   AboutUsBtn,
-} from './style';
+} from "./style";
 
-import { Link, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../../context/AuthContext';
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../context/AuthContext";
 
-import logotipo from '../../../assets/img/Logotipo.svg';
-import notebook from '../../../assets/img/notebook.svg';
-import noz from '../../../assets/img/noz.svg';
+import logotipo from "../../../assets/img/logotipo.svg";
+import notebook from "../../../assets/img/notebook.svg";
+import noz from "../../../assets/img/noz.svg";
 
 const Banner = () => {
   const auth = React.useContext(AuthContext);
@@ -30,7 +30,7 @@ const Banner = () => {
 
   const handleLogout = async () => {
     await auth.signout(); // Chama a função signout() do objeto auth
-    navigate('/'); // Redireciona o usuário para a Home
+    navigate("/"); // Redireciona o usuário para a Home
   };
 
   return (

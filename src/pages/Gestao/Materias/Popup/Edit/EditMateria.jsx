@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import * as C from "./PopUpStyles";
+import * as C from "../../../../../components/View/PopUpStyles";
 
 import { IoClose } from "react-icons/io5";
 
-import InputLabel from "../Inputs/InputLabel";
+import InputLabel from "../../../../../components/Inputs/InputLabel";
 import axios from "axios";
-import { BASE_URL } from "../../context/requests";
-import { Navigate } from "react-router-dom";
+import { BASE_URL } from "../../../../../context/requests";
+import InputSelect from "../../../../../components/Inputs/InputSelect";
 
-const PopUpEdit = ({ memberData, onClose, reloadController, url, id }) => {
+const EditMateria = ({ memberData, onClose, reloadController, id }) => {
   // Criando um estado de objeto com as propriedades do membro
   const [formData, setFormData] = useState({ ...memberData });
 
@@ -20,11 +20,11 @@ const PopUpEdit = ({ memberData, onClose, reloadController, url, id }) => {
     });
   };
 
-  const updateRequest = (url, id, dados) => {
+  const updateRequest = (id, dados) => {
     const token = localStorage.getItem("authToken");
 
     axios
-      .put(`${BASE_URL}${url}/${id}`, dados, {
+      .put(`${BASE_URL}/materias/${id}`, dados, {
         headers: {
           Authorization: token,
         },
@@ -45,22 +45,29 @@ const PopUpEdit = ({ memberData, onClose, reloadController, url, id }) => {
         </C.TopSection>
 
         <C.Form>
-          {Object.keys(formData).map((key) => (
-            <InputLabel
-              key={key}
-              label={key}
-              type="text"
-              value={formData[key]}
-              onChange={(e) => handleChange(key, e.target.value)}
-              placeholder=""
-            />
-          ))}
+          <InputLabel
+            key={"nome"}
+            label={"Nome"}
+            type="text"
+            value={formData["nome"]}
+            onChange={(e) => handleChange("nome", e.target.value)}
+          />
+
+          <InputSelect
+            key={"area"}
+            label={"Area"}
+            options={["Base_Comum", "ADM", "DS", "Contabilidade"]}
+            selected={formData["area"]}
+            funcao={handleChange}
+            campo={"area"}
+          />
         </C.Form>
 
         <C.BottomSection>
           <C.SubmitBtn
             onClick={() => {
-              updateRequest(url, id, formData);
+              console.log(formData);
+              updateRequest(id, formData);
               onClose(formData);
             }}
           >
@@ -72,4 +79,4 @@ const PopUpEdit = ({ memberData, onClose, reloadController, url, id }) => {
   );
 };
 
-export default PopUpEdit;
+export default EditMateria;

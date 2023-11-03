@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import * as C from '../styles';
+import React, { useEffect, useState } from "react";
+import * as C from "../styles";
 
-import axios from 'axios';
-import { BASE_URL } from '../../../context/requests';
+import axios from "axios";
+import { BASE_URL } from "../../../context/requests";
 
-import Pagination from '../../../components/NavegationData/Pagination/Pagination';
-import TableData from '../../../components/Table/TableData';
-import { MdComputer } from 'react-icons/md';
-import BtPost from '../../../components/NavegationData/BtPost/BtPost';
+import Pagination from "../../../components/NavegationData/Pagination/Pagination";
+import TableData from "../../../components/Table/TableData";
+import { MdComputer } from "react-icons/md";
+import BtPost from "../../../components/NavegationData/BtPost/BtPost";
+import TableLabs from "./TableLabs";
+import { AiFillPlusCircle } from "react-icons/ai";
+import AddLab from "./Popup/Add/AddLab";
 
 const Labs = () => {
   const iconTag = <MdComputer />;
@@ -33,7 +36,7 @@ const Labs = () => {
   const handlePageChange = (newPageNumber) => setPageNumber(newPageNumber);
 
   useEffect(() => {
-    const token = localStorage.getItem('authToken');
+    const token = localStorage.getItem("authToken");
 
     axios
       .get(`${BASE_URL}/labs?size=5&page=${pageNumber}`, {
@@ -46,6 +49,12 @@ const Labs = () => {
       });
   }, [pageNumber, reload]);
 
+  const [openViewPost, setOpenViewPost] = useState(false);
+
+  const toggleView = () => {
+    setOpenViewPost(!openViewPost);
+  };
+
   return (
     <C.Section>
       <C.Container>
@@ -53,17 +62,17 @@ const Labs = () => {
         <C.Subtitle>
           Confira os labs cadastrados na sua unidade escolar
         </C.Subtitle>
-        <TableData
-          head={['', 'Id', 'Labs', 'Ações']}
-          data={labs}
-          icon={iconTag}
-          url={'/labs'}
-          reloadController={onReload}
-        />
+        <TableLabs data={labs} reloadController={onReload} />
 
         <C.DivNavegation>
           <Pagination dados={labs} onChange={handlePageChange} />
-          <BtPost url={'/labs'} onReload={onReload} fields={{ nome: '' }} />
+          <C.Button>
+            <AiFillPlusCircle onClick={toggleView} />
+          </C.Button>
+
+          {openViewPost && (
+            <AddLab onClose={toggleView} reloadController={onReload} />
+          )}
         </C.DivNavegation>
       </C.Container>
     </C.Section>

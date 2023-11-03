@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import * as C from '../styles';
+import React, { useEffect, useState } from "react";
+import * as C from "../styles";
 
-import axios from 'axios';
-import { BASE_URL } from '../../../context/requests';
+import axios from "axios";
+import { BASE_URL } from "../../../context/requests";
+import Pagination from "../../../components/NavegationData/Pagination/Pagination";
 
-import { BsPersonFill } from 'react-icons/bs';
-import Pagination from '../../../components/NavegationData/Pagination/Pagination';
-import TableData from '../../../components/Table/TableData';
-import BtPost from '../../../components/NavegationData/BtPost/BtPost';
+import TableMembros from "./TableMembros";
+
+import AddMembro from "./Popup/Add/AddMembro";
+import { AiFillPlusCircle } from "react-icons/ai";
 
 const Membros = () => {
-  const iconTag = <BsPersonFill />;
   //state para recarregar pagina para delete e update
   const [reload, setReload] = useState(false);
 
@@ -34,7 +34,7 @@ const Membros = () => {
   const handlePageChange = (newPageNumber) => setPageNumber(newPageNumber);
 
   useEffect(() => {
-    const token = localStorage.getItem('authToken');
+    const token = localStorage.getItem("authToken");
 
     axios
       .get(`${BASE_URL}/professores?size=6&page=${pageNumber}`, {
@@ -47,6 +47,12 @@ const Membros = () => {
       });
   }, [pageNumber, reload]);
 
+  const [openViewPost, setOpenViewPost] = useState(false);
+
+  const toggleView = () => {
+    setOpenViewPost(!openViewPost);
+  };
+
   return (
     <C.Section>
       <C.Container>
@@ -54,37 +60,17 @@ const Membros = () => {
         <C.Subtitle>
           Confira os membros cadastrados na sua unidade escolar
         </C.Subtitle>
-        <TableData
-          head={[
-            '',
-            'Id',
-            'Nome',
-            'Email',
-            'Area',
-            'Pontos',
-            'Contrato',
-            'Ações',
-          ]}
-          data={professores}
-          icon={iconTag}
-          url={'/professores'}
-          reloadController={onReload}
-        />
+        <TableMembros data={professores} reloadController={onReload} />
 
         <C.DivNavegation>
           <Pagination dados={professores} onChange={handlePageChange} />
-          <BtPost
-            url={'/auth/signup'}
-            onReload={onReload}
-            fields={{
-              nome: '',
-              email: '',
-              senha: '',
-              area: '',
-              pontuacao: '',
-              contrato: '',
-            }}
-          />
+          <C.Button>
+            <AiFillPlusCircle onClick={toggleView} />
+          </C.Button>
+
+          {openViewPost && (
+            <AddMembro onClose={toggleView} reloadController={onReload} />
+          )}
         </C.DivNavegation>
       </C.Container>
     </C.Section>

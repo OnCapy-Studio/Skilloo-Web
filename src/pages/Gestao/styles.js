@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Section = styled.div`
   display: flex;
@@ -25,4 +25,16 @@ export const DivNavegation = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 40px 10px 0px 10px;
+`;
+
+export const Button = styled.div`
+  svg {
+    font-size: 45px;
+    color: #52488c;
+    transition: all 0.5s;
+  }
+
+  svg:hover {
+    transform: scale(1.15);
+  }
 `;

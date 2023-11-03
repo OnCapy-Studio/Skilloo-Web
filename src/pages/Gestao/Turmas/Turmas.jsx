@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import * as C from '../styles';
+import React, { useEffect, useState } from "react";
+import * as C from "../styles";
 
-import axios from 'axios';
-import { BASE_URL } from '../../../context/requests';
-import TableData from '../../../components/Table/TableData';
-import { IoSchool } from 'react-icons/io5';
-import BtPost from '../../../components/NavegationData/BtPost/BtPost';
-import Pagination from '../../../components/NavegationData/Pagination/Pagination';
+import axios from "axios";
+import { BASE_URL } from "../../../context/requests";
+import { IoSchool } from "react-icons/io5";
+import Pagination from "../../../components/NavegationData/Pagination/Pagination";
+import TableTurmas from "./TableTurmas";
+import { AiFillPlusCircle } from "react-icons/ai";
+import AddTurma from "./Popup/Add/AddTurmas";
 
 const Turmas = () => {
   const iconTag = <IoSchool />;
@@ -32,7 +33,7 @@ const Turmas = () => {
   const handlePageChange = (newPageNumber) => setPageNumber(newPageNumber);
 
   useEffect(() => {
-    const token = localStorage.getItem('authToken');
+    const token = localStorage.getItem("authToken");
 
     axios
       .get(`${BASE_URL}/turmas?size=5&page=${pageNumber}`, {
@@ -45,6 +46,12 @@ const Turmas = () => {
       });
   }, [pageNumber, reload]);
 
+  const [openViewPost, setOpenViewPost] = useState(false);
+
+  const toggleView = () => {
+    setOpenViewPost(!openViewPost);
+  };
+
   return (
     <C.Section>
       <C.Container>
@@ -52,21 +59,17 @@ const Turmas = () => {
         <C.Subtitle>
           Confira as turmas cadastradas na sua unidade escolar
         </C.Subtitle>
-        <TableData
-          head={['', 'Id', 'Turmas', 'Periodo', 'Ações']}
-          data={turmas}
-          icon={iconTag}
-          url={'/turmas'}
-          reloadController={onReload}
-        />
+        <TableTurmas data={turmas} reloadController={onReload} />
 
         <C.DivNavegation>
           <Pagination dados={turmas} onChange={handlePageChange} />
-          <BtPost
-            url={'/turmas'}
-            onReload={onReload}
-            fields={{ nome: '', periodo: '' }}
-          />
+          <C.Button>
+            <AiFillPlusCircle onClick={toggleView} />
+          </C.Button>
+
+          {openViewPost && (
+            <AddTurma onClose={toggleView} reloadController={onReload} />
+          )}
         </C.DivNavegation>
       </C.Container>
     </C.Section>
