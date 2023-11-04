@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from "react";
-import * as C from "../../../../../components/View/PopUpStyles";
+import React, { useState } from "react";
+import * as C from "../../../../../components/PopUpStyles";
 
 import { IoClose } from "react-icons/io5";
 
-import InputLabel from "../../../../../components/Inputs/InputLabel";
 import axios from "axios";
 import { BASE_URL } from "../../../../../context/requests";
 import InputSelect from "../../../../../components/Inputs/InputSelect";
+import InputLabelLong from "../../../../../components/Inputs/InputLabelLong";
+import { CiEdit } from "react-icons/ci";
 
 const EditTurma = ({ memberData, onClose, reloadController, id }) => {
+  const icon = <CiEdit />;
   // Criando um estado de objeto com as propriedades do membro
   const [formData, setFormData] = useState({ ...memberData });
 
@@ -33,35 +35,34 @@ const EditTurma = ({ memberData, onClose, reloadController, id }) => {
         alert("Dados atualizados com sucesso!");
         reloadController();
       })
-      .catch((e) => console.log(e));
+      .catch((e) => alert("Error: " + e));
   };
-
-  console.log(formData);
 
   return (
     <C.Container>
       <C.Frame>
         <C.TopSection>
-          <C.Title>Dados:</C.Title>
-          <IoClose onClick={onClose} />
+          <C.TitleSection>
+            <C.Icon>{icon}</C.Icon>
+            <div>
+              <C.Title>Atualizar Turma</C.Title>
+              <C.Subtitle>Insira os novos dados da turma</C.Subtitle>
+            </div>
+          </C.TitleSection>
+          <C.IconClose>
+            <IoClose onClick={onClose} />
+          </C.IconClose>
         </C.TopSection>
 
         <C.Form>
-          <InputLabel
+          <InputLabelLong
             key={"nome"}
             label={"Nome"}
             type="text"
             value={formData["nome"]}
             onChange={(e) => handleChange("nome", e.target.value)}
           />
-          <InputSelect
-            key={"periodo"}
-            label={"Período"}
-            options={["Manha", "Tarde", "Noite"]}
-            selected={formData["periodo"]}
-            funcao={handleChange}
-            campo={"periodo"}
-          />
+
           <InputSelect
             key={"inicio"}
             label={"Início"}
@@ -79,6 +80,14 @@ const EditTurma = ({ memberData, onClose, reloadController, id }) => {
             campo={"formacao"}
           />
           <InputSelect
+            key={"periodo"}
+            label={"Período"}
+            options={["Manha", "Tarde", "Noite"]}
+            selected={formData["periodo"]}
+            funcao={handleChange}
+            campo={"periodo"}
+          />
+          <InputSelect
             key={"avaliacao"}
             label={"Avaliação"}
             selected={formData["avaliacao"]}
@@ -89,6 +98,7 @@ const EditTurma = ({ memberData, onClose, reloadController, id }) => {
         </C.Form>
 
         <C.BottomSection>
+          <C.CancelBtn onClick={onClose}>Cancelar</C.CancelBtn>
           <C.SubmitBtn
             onClick={() => {
               console.log(formData);

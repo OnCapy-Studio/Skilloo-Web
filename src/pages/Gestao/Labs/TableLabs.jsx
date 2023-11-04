@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import * as C from "../../../components/Table/styles";
 
 import { HiMiniPencil } from "react-icons/hi2";
 import { IoMdTrash } from "react-icons/io";
 import axios from "axios";
 import { BASE_URL } from "../../../context/requests";
-import { BsPersonFill } from "react-icons/bs";
 import EditMembro from "./Popup/Edit/EditLab";
+import { PiDesktopTowerFill } from "react-icons/pi";
 
 const TableLabs = ({ data, reloadController }) => {
-  const icon = <BsPersonFill />;
+  const icon = <PiDesktopTowerFill />;
   //states para controlar a abertura do popup de ediçao
   const [openView, setOpenView] = useState(false);
   const [viewMemberData, setViewMemberData] = useState(null);

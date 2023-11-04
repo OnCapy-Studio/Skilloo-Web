@@ -5,11 +5,11 @@ import { HiMiniPencil } from "react-icons/hi2";
 import { IoMdTrash } from "react-icons/io";
 import axios from "axios";
 import { BASE_URL } from "../../../context/requests";
-import { BsPersonFill } from "react-icons/bs";
-import EditMembro from "./Popup/Edit/EditMembro";
+import EditMembro from "./Popup/Edit/EditTicket";
+import { MdReportProblem } from "react-icons/md";
 
-const TableMembros = ({ data, reloadController }) => {
-  const icon = <BsPersonFill />;
+const TableSuporte = ({ data, reloadController }) => {
+  const icon = <MdReportProblem />;
   //states para controlar a abertura do popup de ediçao
   const [openView, setOpenView] = useState(false);
   const [viewMemberData, setViewMemberData] = useState(null);
@@ -30,7 +30,7 @@ const TableMembros = ({ data, reloadController }) => {
     const token = localStorage.getItem("authToken");
 
     axios
-      .delete(`${BASE_URL}/professores/${id}`, {
+      .delete(`${BASE_URL}/suporte/${id}`, {
         headers: {
           Authorization: token,
         },
@@ -56,11 +56,11 @@ const TableMembros = ({ data, reloadController }) => {
             <tr>
               <C.Th key={0}>{""}</C.Th>
               <C.Th key={1}>{"Id"}</C.Th>
-              <C.Th key={2}>{"Nome"}</C.Th>
-              <C.Th key={3}>{"Email"}</C.Th>
-              <C.Th key={4}>{"Área"}</C.Th>
-              <C.Th key={5}>{"Pontos"}</C.Th>
-              <C.Th key={6}>{"Contrato"}</C.Th>
+              <C.Th key={2}>{"Título"}</C.Th>
+              <C.Th key={3}>{"Lab"}</C.Th>
+              <C.Th key={4}>{"Descrição"}</C.Th>
+              <C.Th key={5}>{"Status"}</C.Th>
+              <C.Th key={6}>{"Autor"}</C.Th>
               <C.Th key={7}>{"Ações"}</C.Th>
             </tr>
           </thead>
@@ -104,4 +104,4 @@ const TableMembros = ({ data, reloadController }) => {
   );
 };
 
-export default TableMembros;
+export default TableSuporte;

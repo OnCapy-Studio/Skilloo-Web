@@ -5,15 +5,11 @@ import axios from "axios";
 import { BASE_URL } from "../../../context/requests";
 
 import Pagination from "../../../components/NavegationData/Pagination/Pagination";
-import TableData from "../../../components/Table/TableData";
-import { MdComputer } from "react-icons/md";
-import BtPost from "../../../components/NavegationData/BtPost/BtPost";
 import TableLabs from "./TableLabs";
 import { AiFillPlusCircle } from "react-icons/ai";
 import AddLab from "./Popup/Add/AddLab";
 
 const Labs = () => {
-  const iconTag = <MdComputer />;
   const [reload, setReload] = useState(false);
 
   const onReload = () => {

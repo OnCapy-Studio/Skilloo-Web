@@ -8,6 +8,7 @@ import * as C from "./style.js";
 
 import InputLabel from "../../components/Inputs/InputLabel";
 import logomarca from "../../assets/img/logomarca1.svg";
+import InputLabelLong from "../../components/Inputs/InputLabelLong";
 
 export const Login = () => {
   const auth = React.useContext(AuthContext); // Atribui as informações de autenficação em uma variavel
@@ -49,7 +50,7 @@ export const Login = () => {
       <C.Title>Sign in to Skilloo</C.Title>
 
       <C.Form>
-        <InputLabel
+        <InputLabelLong
           label="Email:"
           type="text"
           value={email}
@@ -57,7 +58,7 @@ export const Login = () => {
           placeholder="Digite seu Email"
         />
 
-        <InputLabel
+        <InputLabelLong
           label="Senha:"
           type="password"
           value={senha}

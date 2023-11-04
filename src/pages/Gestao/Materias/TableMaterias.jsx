@@ -1,16 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import * as C from "../../../components/Table/styles";
 
 import { HiMiniPencil } from "react-icons/hi2";
 import { IoMdTrash } from "react-icons/io";
 import axios from "axios";
 import { BASE_URL } from "../../../context/requests";
-import { BsPersonFill } from "react-icons/bs";
-import EditMembro from "./Popup/Edit/EditMateria";
 import EditMateria from "./Popup/Edit/EditMateria";
+import { BiSolidBook } from "react-icons/bi";
 
 const TableMaterias = ({ data, reloadController }) => {
-  const icon = <BsPersonFill />;
+  const icon = <BiSolidBook />;
   //states para controlar a abertura do popup de ediçao
   const [openView, setOpenView] = useState(false);
   const [viewMemberData, setViewMemberData] = useState(null);

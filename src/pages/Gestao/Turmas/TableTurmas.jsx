@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import * as C from "../../../components/Table/styles";
 
 import { HiMiniPencil } from "react-icons/hi2";
 import { IoMdTrash } from "react-icons/io";
 import axios from "axios";
 import { BASE_URL } from "../../../context/requests";
-import { BsPersonFill } from "react-icons/bs";
 
 import EditTurma from "./Popup/Edit/EditTurma";
+import { SiGoogleclassroom } from "react-icons/si";
 
 const TableTurmas = ({ data, reloadController }) => {
-  const icon = <BsPersonFill />;
+  const icon = <SiGoogleclassroom />;
   //states para controlar a abertura do popup de ediçao
   const [openView, setOpenView] = useState(false);
   const [viewMemberData, setViewMemberData] = useState(null);

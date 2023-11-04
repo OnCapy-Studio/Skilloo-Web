@@ -3,23 +3,21 @@ import * as C from "../../../../../components/PopUpStyles";
 
 import { IoClose } from "react-icons/io5";
 
-import InputLabel from "../../../../../components/Inputs/InputLabel";
 import axios from "axios";
 import { BASE_URL } from "../../../../../context/requests";
 import InputSelect from "../../../../../components/Inputs/InputSelect";
 import InputLabelLong from "../../../../../components/Inputs/InputLabelLong";
-import { BsPersonFill } from "react-icons/bs";
+import InputBig from "../../../../../components/Inputs/InputBig";
+import { MdReportProblem } from "react-icons/md";
 
-const AddMembro = ({ onClose, reloadController }) => {
+const AddTicket = ({ onClose, reloadController }) => {
+  const icon = <MdReportProblem />;
   // Criando um estado de objeto com as propriedades do membro
-  const icon = <BsPersonFill />;
   const [formData, setFormData] = useState({
-    nome: "",
-    email: "",
-    senha: "",
-    area: "Base_Comum",
-    pontuacao: "",
-    contrato: "CLT",
+    titulo: "",
+    lab: "Lab 1",
+    descricao: "",
+    status: "Para_Resolver",
   });
 
   // Função para atualizar um valor específico no objeto de estado
@@ -34,7 +32,7 @@ const AddMembro = ({ onClose, reloadController }) => {
     const token = localStorage.getItem("authToken");
 
     axios
-      .post(`${BASE_URL}/auth/signup`, dados, {
+      .post(`${BASE_URL}/suporte`, dados, {
         headers: {
           Authorization: token,
         },
@@ -43,7 +41,7 @@ const AddMembro = ({ onClose, reloadController }) => {
         alert("Dados inseridos com sucesso!");
         reloadController();
       })
-      .catch((e) => console.log(e));
+      .catch((e) => alert("Error: " + e));
   };
 
   return (
@@ -53,8 +51,8 @@ const AddMembro = ({ onClose, reloadController }) => {
           <C.TitleSection>
             <C.Icon>{icon}</C.Icon>
             <div>
-              <C.Title>Adicionar Professor</C.Title>
-              <C.Subtitle>Insira os dados do novo professor</C.Subtitle>
+              <C.Title>Reportar problema</C.Title>
+              <C.Subtitle>Descreva o problema encontrado na unidade</C.Subtitle>
             </div>
           </C.TitleSection>
 
@@ -65,44 +63,34 @@ const AddMembro = ({ onClose, reloadController }) => {
 
         <C.Form>
           <InputLabelLong
-            key={"nome"}
-            label={"Nome"}
+            key={"titulo"}
+            label={"Título"}
             type="text"
-            onChange={(e) => handleChange("nome", e.target.value)}
+            onChange={(e) => handleChange("titulo", e.target.value)}
           />
-          <InputLabelLong
-            key={"email"}
-            label={"Email"}
-            type="text"
-            onChange={(e) => handleChange("email", e.target.value)}
-          />
-          <InputLabel
-            key={"senha"}
-            label={"Senha"}
-            type="password"
-            onChange={(e) => handleChange("senha", e.target.value)}
-          />
+
           <InputSelect
-            key={"area"}
-            label={"Area"}
-            options={["Base_Comum", "ADM", "DS", "Contabilidade"]}
-            selected={"Base_Comum"}
+            key={"lab"}
+            label={"Lab"}
+            options={["Lab 1", "Lab 2", "Lab 3", "Lab Audiovisual"]}
+            selected={"Laboratório 1"}
             funcao={handleChange}
-            campo={"area"}
+            campo={"lab"}
           />
-          <InputLabel
-            key={"pontos"}
-            label={"Pontos"}
-            type="text"
-            onChange={(e) => handleChange("pontuacao", e.target.value)}
-          />
+
           <InputSelect
-            key={"contrato"}
-            label={"Contrato"}
-            options={["CLT", "Estadual"]}
-            selected={"CLT"}
+            key={"status"}
+            label={"Status"}
+            options={["Para_Resolver", "Em_Andamento", "Resolvido"]}
+            selected={"Para_Resolver"}
             funcao={handleChange}
-            campo={"contrato"}
+            campo={"status"}
+          />
+          <InputBig
+            key={"descricao"}
+            label={"Descrição"}
+            type="text"
+            onChange={(e) => handleChange("descricao", e.target.value)}
           />
         </C.Form>
 
@@ -122,4 +110,4 @@ const AddMembro = ({ onClose, reloadController }) => {
   );
 };
 
-export default AddMembro;
+export default AddTicket;

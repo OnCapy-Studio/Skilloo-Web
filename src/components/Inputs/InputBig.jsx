@@ -7,12 +7,12 @@ export const Label = styled.label`
   font-weight: 600;
 `;
 
-export const Input = styled.input`
+export const Input = styled.textarea`
   outline: none;
   border: 1px solid #acacac;
   border-radius: 5px;
   width: 100%;
-  height: 40px;
+  height: 100px;
   padding: 1em;
   font-size: 0.9rem;
   font-family: "Inter", sans-serif;
@@ -20,6 +20,7 @@ export const Input = styled.input`
   background-color: #ffffff;
   font-weight: 600;
   margin-top: 5px;
+  resize: none;
 
   &:focus {
     border: 2px solid #6a5fb6;
@@ -27,17 +28,17 @@ export const Input = styled.input`
 `;
 
 export const Container = styled.div`
-  width: 48%;
+  width: 100%;
   margin-bottom: 10px;
 `;
 
-const InputLabel = ({ label, type, value, onChange }) => {
+const InputBig = ({ label, value, onChange }) => {
   return (
     <Container>
       <Label>{label}</Label>
-      <Input type={type} defaultValue={value} onChange={onChange} />
+      <Input defaultValue={value} onChange={onChange} />
     </Container>
   );
 };
 
-export default InputLabel;
+export default InputBig;

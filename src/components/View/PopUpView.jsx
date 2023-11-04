@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import * as C from "./PopUpStyles";
+import * as C from "../PopUpStyles";
 
 import { IoClose } from "react-icons/io5";
 

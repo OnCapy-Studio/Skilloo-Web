@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from "react";
-import * as C from "../../../../../components/View/PopUpStyles";
+import React, { useState } from "react";
+import * as C from "../../../../../components/PopUpStyles";
 
 import { IoClose } from "react-icons/io5";
 
 import InputLabel from "../../../../../components/Inputs/InputLabel";
 import axios from "axios";
 import { BASE_URL } from "../../../../../context/requests";
-import InputSelect from "../../../../../components/Inputs/InputSelect";
+import InputLabelLong from "../../../../../components/Inputs/InputLabelLong";
+import InputBig from "../../../../../components/Inputs/InputBig";
+import { PiDesktopTowerFill } from "react-icons/pi";
 
 const AddLab = ({ onClose, reloadController }) => {
+  const icon = <PiDesktopTowerFill />;
   // Criando um estado de objeto com as propriedades do membro
   const [formData, setFormData] = useState({
     nome: "",
@@ -27,8 +30,6 @@ const AddLab = ({ onClose, reloadController }) => {
 
   const postRequest = (dados) => {
     const token = localStorage.getItem("authToken");
-
-    console.log(dados);
     axios
       .post(`${BASE_URL}/labs`, dados, {
         headers: {
@@ -39,19 +40,28 @@ const AddLab = ({ onClose, reloadController }) => {
         alert("Dados inseridos com sucesso!");
         reloadController();
       })
-      .catch((e) => console.log(e));
+      .catch((e) => alert("Error: " + e));
   };
 
   return (
     <C.Container>
       <C.Frame>
         <C.TopSection>
-          <C.Title>Dados:</C.Title>
-          <IoClose onClick={onClose} />
+          <C.TitleSection>
+            <C.Icon>{icon}</C.Icon>
+            <div>
+              <C.Title>Adicionar Laboratório</C.Title>
+              <C.Subtitle>Insira os dados do novo laboratório</C.Subtitle>
+            </div>
+          </C.TitleSection>
+
+          <C.IconClose>
+            <IoClose onClick={onClose} />
+          </C.IconClose>
         </C.TopSection>
 
         <C.Form>
-          <InputLabel
+          <InputLabelLong
             key={"nome"}
             label={"Nome"}
             type="text"
@@ -69,7 +79,7 @@ const AddLab = ({ onClose, reloadController }) => {
             type="number"
             onChange={(e) => handleChange("maquinas", e.target.value)}
           />
-          <InputLabel
+          <InputBig
             key={"descricao"}
             label={"Descrição"}
             type="text"
@@ -78,6 +88,7 @@ const AddLab = ({ onClose, reloadController }) => {
         </C.Form>
 
         <C.BottomSection>
+          <C.CancelBtn onClick={onClose}>Cancelar</C.CancelBtn>
           <C.SubmitBtn
             onClick={() => {
               postRequest(formData);

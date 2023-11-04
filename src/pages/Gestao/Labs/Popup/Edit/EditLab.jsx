@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from "react";
-import * as C from "../../../../../components/View/PopUpStyles";
+import React, { useState } from "react";
+import * as C from "../../../../../components/PopUpStyles";
 
 import { IoClose } from "react-icons/io5";
 
 import InputLabel from "../../../../../components/Inputs/InputLabel";
 import axios from "axios";
 import { BASE_URL } from "../../../../../context/requests";
-import InputSelect from "../../../../../components/Inputs/InputSelect";
+import InputLabelLong from "../../../../../components/Inputs/InputLabelLong";
+import InputBig from "../../../../../components/Inputs/InputBig";
+import { CiEdit } from "react-icons/ci";
 
 const EditLab = ({ memberData, onClose, reloadController, id }) => {
+  const icon = <CiEdit />;
   // Criando um estado de objeto com as propriedades do membro
   const [formData, setFormData] = useState({ ...memberData });
 
@@ -40,12 +43,20 @@ const EditLab = ({ memberData, onClose, reloadController, id }) => {
     <C.Container>
       <C.Frame>
         <C.TopSection>
-          <C.Title>Dados:</C.Title>
-          <IoClose onClick={onClose} />
-        </C.TopSection>
+          <C.TitleSection>
+            <C.Icon>{icon}</C.Icon>
+            <div>
+              <C.Title>Editar Laboratório</C.Title>
+              <C.Subtitle>Insira os novos dados do laboratório</C.Subtitle>
+            </div>
+          </C.TitleSection>
 
+          <C.IconClose>
+            <IoClose onClick={onClose} />
+          </C.IconClose>
+        </C.TopSection>
         <C.Form>
-          <InputLabel
+          <InputLabelLong
             key={"nome"}
             label={"Nome"}
             type="text"
@@ -66,7 +77,7 @@ const EditLab = ({ memberData, onClose, reloadController, id }) => {
             value={formData["maquinas"]}
             onChange={(e) => handleChange("maquinas", e.target.value)}
           />
-          <InputLabel
+          <InputBig
             key={"descricao"}
             label={"Descrição"}
             type="text"
@@ -76,6 +87,7 @@ const EditLab = ({ memberData, onClose, reloadController, id }) => {
         </C.Form>
 
         <C.BottomSection>
+          <C.CancelBtn onClick={onClose}>Cancelar</C.CancelBtn>
           <C.SubmitBtn
             onClick={() => {
               console.log(formData);

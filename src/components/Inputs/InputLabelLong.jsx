@@ -7,12 +7,13 @@ export const Label = styled.label`
   font-weight: 600;
 `;
 
-export const Select = styled.select`
+export const Input = styled.input`
   outline: none;
   border: 1px solid #acacac;
   border-radius: 5px;
   width: 100%;
   height: 40px;
+  padding: 1em;
   font-size: 0.9rem;
   font-family: "Inter", sans-serif;
   color: #838383;
@@ -26,33 +27,17 @@ export const Select = styled.select`
 `;
 
 export const Container = styled.div`
-  width: 48%;
+  width: 100%;
   margin-bottom: 10px;
 `;
 
-const InputSelect = ({ label, options, selected, funcao, campo }) => {
+const InputLabelLong = ({ label, type, value, onChange }) => {
   return (
     <Container>
       <Label>{label}</Label>
-      <Select
-        name={label}
-        defaultValue={"DEFAULT"}
-        onChange={(e) => funcao(campo, e.target.value)}
-      >
-        {options.map((option) =>
-          option == selected ? (
-            <option key={option} value={"DEFAULT"}>
-              {option}
-            </option>
-          ) : (
-            <option key={option} value={option}>
-              {option}
-            </option>
-          )
-        )}
-      </Select>
+      <Input type={type} defaultValue={value} onChange={onChange} />
     </Container>
   );
 };
 
-export default InputSelect;
+export default InputLabelLong;

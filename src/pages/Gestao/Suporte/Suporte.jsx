@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import * as C from '../styles';
-import axios from 'axios';
-import { BASE_URL } from '../../../context/requests';
-import TableData from '../../../components/Table/TableData';
-import Pagination from '../../../components/NavegationData/Pagination/Pagination';
-import { MdOutlineReportProblem } from 'react-icons/md';
-import BtPost from '../../../components/NavegationData/BtPost/BtPost';
+import React, { useEffect, useState } from "react";
+import * as C from "../styles";
+import axios from "axios";
+import { BASE_URL } from "../../../context/requests";
+import Pagination from "../../../components/NavegationData/Pagination/Pagination";
+import { MdOutlineReportProblem } from "react-icons/md";
+
+import TableSuporte from "./TableSuporte";
+import { AiFillPlusCircle } from "react-icons/ai";
+import AddTicket from "./Popup/Add/AddTicket";
 
 const Suporte = () => {
   const iconTag = <MdOutlineReportProblem />;
@@ -32,7 +34,7 @@ const Suporte = () => {
   const handlePageChange = (newPageNumber) => setPageNumber(newPageNumber);
 
   useEffect(() => {
-    const token = localStorage.getItem('authToken');
+    const token = localStorage.getItem("authToken");
 
     axios
       .get(`${BASE_URL}/suporte/allTickets?size=5&page=${pageNumber}`, {
@@ -45,6 +47,12 @@ const Suporte = () => {
       });
   }, [pageNumber, reload]);
 
+  const [openViewPost, setOpenViewPost] = useState(false);
+
+  const toggleView = () => {
+    setOpenViewPost(!openViewPost);
+  };
+
   return (
     <C.Section>
       <C.Container>
@@ -52,20 +60,16 @@ const Suporte = () => {
         <C.Subtitle>
           Confira os problemas a serem resolvidos na sua unidade escolar
         </C.Subtitle>
-        <TableData
-          head={['', 'Id', 'Titulo', 'Lab', 'Descriçao', 'Status', 'Autor']}
-          data={tickets}
-          icon={iconTag}
-          url={'/suporte'}
-          reloadController={onReload}
-        />
+        <TableSuporte data={tickets} reloadController={onReload} />
         <C.DivNavegation>
           <Pagination dados={tickets} onChange={handlePageChange} />
-          <BtPost
-            url={'/suporte'}
-            onReload={onReload}
-            fields={{ titulo: '', lab: '', descricao: '', status: '' }}
-          />
+          <C.Button>
+            <AiFillPlusCircle onClick={toggleView} />
+          </C.Button>
+
+          {openViewPost && (
+            <AddTicket onClose={toggleView} reloadController={onReload} />
+          )}
         </C.DivNavegation>
       </C.Container>
     </C.Section>

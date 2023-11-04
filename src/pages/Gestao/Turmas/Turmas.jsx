@@ -3,14 +3,12 @@ import * as C from "../styles";
 
 import axios from "axios";
 import { BASE_URL } from "../../../context/requests";
-import { IoSchool } from "react-icons/io5";
 import Pagination from "../../../components/NavegationData/Pagination/Pagination";
 import TableTurmas from "./TableTurmas";
 import { AiFillPlusCircle } from "react-icons/ai";
 import AddTurma from "./Popup/Add/AddTurmas";
 
 const Turmas = () => {
-  const iconTag = <IoSchool />;
   const [reload, setReload] = useState(false);
 
   const onReload = () => {

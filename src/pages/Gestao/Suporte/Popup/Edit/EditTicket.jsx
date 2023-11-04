@@ -7,18 +7,13 @@ import axios from "axios";
 import { BASE_URL } from "../../../../../context/requests";
 import InputSelect from "../../../../../components/Inputs/InputSelect";
 import InputLabelLong from "../../../../../components/Inputs/InputLabelLong";
+import InputBig from "../../../../../components/Inputs/InputBig";
+import { CiEdit } from "react-icons/ci";
 
-import { BiSolidBook } from "react-icons/bi";
-import PopUpSuccess from "../../../../../components/PopUpResponses/PopUpSuccess/PopUpSuccess";
-
-const AddMateria = ({ onClose, reloadController }) => {
-  const icon = <BiSolidBook />;
-
+const EditTicket = ({ memberData, onClose, reloadController, id }) => {
+  const icon = <CiEdit />;
   // Criando um estado de objeto com as propriedades do membro
-  const [formData, setFormData] = useState({
-    nome: "",
-    area: "Base_Comum",
-  });
+  const [formData, setFormData] = useState({ ...memberData });
 
   // Função para atualizar um valor específico no objeto de estado
   const handleChange = (property, value) => {
@@ -28,20 +23,20 @@ const AddMateria = ({ onClose, reloadController }) => {
     });
   };
 
-  const postRequest = (dados) => {
+  const updateRequest = (id, dados) => {
     const token = localStorage.getItem("authToken");
 
     axios
-      .post(`${BASE_URL}/materias`, dados, {
+      .put(`${BASE_URL}/suporte/${id}`, dados, {
         headers: {
           Authorization: token,
         },
       })
       .then(() => {
-        alert("Dados Inseridos com Sucesso!");
+        alert("Dados atualizados com sucesso!");
         reloadController();
       })
-      .catch((e) => alert("Erro: " + e));
+      .catch((e) => alert("Error : " + e));
   };
 
   return (
@@ -51,8 +46,8 @@ const AddMateria = ({ onClose, reloadController }) => {
           <C.TitleSection>
             <C.Icon>{icon}</C.Icon>
             <div>
-              <C.Title>Adicionar Matéria</C.Title>
-              <C.Subtitle>Insira os dados da nova matéria</C.Subtitle>
+              <C.Title>Editar Problema</C.Title>
+              <C.Subtitle>Insira os novos dados do relato</C.Subtitle>
             </div>
           </C.TitleSection>
 
@@ -63,18 +58,34 @@ const AddMateria = ({ onClose, reloadController }) => {
 
         <C.Form>
           <InputLabelLong
-            key={"nome"}
-            label={"Nome"}
+            key={"titulo"}
+            label={"Título"}
             type="text"
-            onChange={(e) => handleChange("nome", e.target.value)}
+            value={formData["titulo"]}
+            onChange={(e) => handleChange("titulo", e.target.value)}
           />
           <InputSelect
-            key={"area"}
-            label={"Area"}
-            options={["Base_Comum", "ADM", "DS", "Contabilidade"]}
-            selected={"Base_Comum"}
+            key={"lab"}
+            label={"Lab"}
+            options={["Lab 1", "Lab 2", "Lab 3", "Lab Audiovisual"]}
+            selected={formData["lab"]}
             funcao={handleChange}
-            campo={"area"}
+            campo={"lab"}
+          />
+          <InputSelect
+            key={"status"}
+            label={"Status"}
+            options={["Para_Resolver", "Em_Andamento", "Resolvido"]}
+            selected={formData["status"]}
+            funcao={handleChange}
+            campo={"status"}
+          />
+          <InputBig
+            key={"descricao"}
+            label={"Descrição"}
+            type="text"
+            value={formData["descricao"]}
+            onChange={(e) => handleChange("descricao", e.target.value)}
           />
         </C.Form>
 
@@ -82,7 +93,8 @@ const AddMateria = ({ onClose, reloadController }) => {
           <C.CancelBtn onClick={onClose}>Cancelar</C.CancelBtn>
           <C.SubmitBtn
             onClick={() => {
-              postRequest(formData);
+              console.log(formData);
+              updateRequest(id, formData);
               onClose(formData);
             }}
           >
@@ -94,4 +106,4 @@ const AddMateria = ({ onClose, reloadController }) => {
   );
 };
 
-export default AddMateria;
+export default EditTicket;

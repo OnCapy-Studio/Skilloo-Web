@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from "react";
-import * as C from "../../../../../components/View/PopUpStyles";
+import React, { useState } from "react";
+import * as C from "../../../../../components/PopUpStyles";
 
 import { IoClose } from "react-icons/io5";
 
-import InputLabel from "../../../../../components/Inputs/InputLabel";
 import axios from "axios";
 import { BASE_URL } from "../../../../../context/requests";
 import InputSelect from "../../../../../components/Inputs/InputSelect";
+import InputLabelLong from "../../../../../components/Inputs/InputLabelLong";
+import { SiGoogleclassroom } from "react-icons/si";
 
 const AddTurma = ({ onClose, reloadController }) => {
+  const icon = <SiGoogleclassroom />;
   // Criando um estado de objeto com as propriedades do membro
   const [formData, setFormData] = useState({
     nome: "",
@@ -29,7 +31,6 @@ const AddTurma = ({ onClose, reloadController }) => {
   const postRequest = (dados) => {
     const token = localStorage.getItem("authToken");
 
-    console.log(dados);
     axios
       .post(`${BASE_URL}/turmas`, dados, {
         headers: {
@@ -40,32 +41,34 @@ const AddTurma = ({ onClose, reloadController }) => {
         alert("Dados inseridos com sucesso!");
         reloadController();
       })
-      .catch((e) => console.log(e));
+      .catch((e) => alert("Error: " + e));
   };
 
   return (
     <C.Container>
       <C.Frame>
         <C.TopSection>
-          <C.Title>Dados:</C.Title>
-          <IoClose onClick={onClose} />
+          <C.TitleSection>
+            <C.Icon>{icon}</C.Icon>
+            <div>
+              <C.Title>Adicionar Turma</C.Title>
+              <C.Subtitle>Insira os dados da nova turma</C.Subtitle>
+            </div>
+          </C.TitleSection>
+
+          <C.IconClose>
+            <IoClose onClick={onClose} />
+          </C.IconClose>
         </C.TopSection>
 
         <C.Form>
-          <InputLabel
+          <InputLabelLong
             key={"nome"}
             label={"Nome"}
             type="text"
             onChange={(e) => handleChange("nome", e.target.value)}
           />
-          <InputSelect
-            key={"periodo"}
-            label={"Período"}
-            options={["Manha", "Tarde", "Noite"]}
-            selected={"Manha"}
-            funcao={handleChange}
-            campo={"periodo"}
-          />
+
           <InputSelect
             key={"inicio"}
             label={"Início"}
@@ -83,6 +86,14 @@ const AddTurma = ({ onClose, reloadController }) => {
             campo={"formacao"}
           />
           <InputSelect
+            key={"periodo"}
+            label={"Período"}
+            options={["Manha", "Tarde", "Noite"]}
+            selected={"Manha"}
+            funcao={handleChange}
+            campo={"periodo"}
+          />
+          <InputSelect
             key={"avaliacao"}
             label={"Avaliação"}
             options={["1", "2", "3", "4", "5"]}
@@ -93,6 +104,7 @@ const AddTurma = ({ onClose, reloadController }) => {
         </C.Form>
 
         <C.BottomSection>
+          <C.CancelBtn onClick={onClose}>Cancelar</C.CancelBtn>
           <C.SubmitBtn
             onClick={() => {
               postRequest(formData);
