@@ -40,7 +40,7 @@ const Materias = () => {
     const token = localStorage.getItem("authToken");
 
     axios
-      .get(`${BASE_URL}/materias?size=5&page=${pageNumber}`, {
+      .get(`${BASE_URL}/materias?size=6&page=${pageNumber}`, {
         headers: {
           Authorization: token,
         },

@@ -55,10 +55,10 @@ const TableMaterias = ({ data, reloadController }) => {
           <thead>
             <tr>
               <C.Th key={0}>{""}</C.Th>
-              <C.Th key={1}>{"Id"}</C.Th>
-              <C.Th key={2}>{"Nome"}</C.Th>
-              <C.Th key={3}>{"Área"}</C.Th>
-              <C.Th key={4}>{"Ações"}</C.Th>
+              <C.Th key={1}>{"ID"}</C.Th>
+              <C.Th key={2}>{"NOME"}</C.Th>
+              <C.Th key={3}>{"ÁREA"}</C.Th>
+              <C.Th key={4}>{"AÇÕES"}</C.Th>
             </tr>
           </thead>
           <tbody>

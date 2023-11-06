@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
   max-width: 100%;
@@ -7,11 +7,10 @@ export const Container = styled.div`
 
 export const Table = styled.table`
   background-color: #fff;
-  border-radius: 15px;
+  border-radius: 10px;
   border-collapse: collapse;
-  padding: 0 1.5em;
-  width: 1200px;
   table-layout: auto;
+  width: 100%;
 
   th:last-child {
     display: flex;
@@ -23,17 +22,26 @@ export const Table = styled.table`
     padding: 1.5em;
     margin: auto;
   }
+
+  tr:nth-child(odd) {
+    background-color: #f7f8fc;
+  }
 `;
 
 export const Th = styled.th`
   padding: 1.5em;
   color: #777777;
+  background-color: #fff;
   border-bottom: 1px solid #d4d3d3;
+  font-size: 0.9em;
   text-align: left;
+  font-weight: 600;
 `;
 
 export const Td = styled.td`
   padding: 1.5em;
+  border-bottom: 1px solid #d4d3d3;
+  font-weight: 500;
 
   div {
     display: flex;

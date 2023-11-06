@@ -8,6 +8,8 @@ import { BASE_URL } from "../../../context/requests";
 import { BsPersonFill } from "react-icons/bs";
 import EditMembro from "./Popup/Edit/EditMembro";
 
+import InputLabel from "../../../components/Inputs/InputLabel";
+
 const TableMembros = ({ data, reloadController }) => {
   const icon = <BsPersonFill />;
   //states para controlar a abertura do popup de ediçao
@@ -55,13 +57,13 @@ const TableMembros = ({ data, reloadController }) => {
           <thead>
             <tr>
               <C.Th key={0}>{""}</C.Th>
-              <C.Th key={1}>{"Id"}</C.Th>
-              <C.Th key={2}>{"Nome"}</C.Th>
-              <C.Th key={3}>{"Email"}</C.Th>
-              <C.Th key={4}>{"Área"}</C.Th>
-              <C.Th key={5}>{"Pontos"}</C.Th>
-              <C.Th key={6}>{"Contrato"}</C.Th>
-              <C.Th key={7}>{"Ações"}</C.Th>
+              <C.Th key={1}>{"ID"}</C.Th>
+              <C.Th key={2}>{"NOME"}</C.Th>
+              <C.Th key={3}>{"EMAIL"}</C.Th>
+              <C.Th key={4}>{"ÁREA"}</C.Th>
+              <C.Th key={5}>{"PONTOS"}</C.Th>
+              <C.Th key={6}>{"CONTRATO"}</C.Th>
+              <C.Th key={7}>{"AÇÕES"}</C.Th>
             </tr>
           </thead>
           <tbody>

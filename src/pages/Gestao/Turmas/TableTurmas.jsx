@@ -56,13 +56,13 @@ const TableTurmas = ({ data, reloadController }) => {
           <thead>
             <tr>
               <C.Th key={0}>{""}</C.Th>
-              <C.Th key={1}>{"Id"}</C.Th>
-              <C.Th key={2}>{"Turma"}</C.Th>
-              <C.Th key={3}>{"Periodo"}</C.Th>
-              <C.Th key={4}>{"Início"}</C.Th>
-              <C.Th key={5}>{"Formação"}</C.Th>
-              <C.Th key={6}>{"Avaliação"}</C.Th>
-              <C.Th key={7}>{"Ações"}</C.Th>
+              <C.Th key={1}>{"ID"}</C.Th>
+              <C.Th key={2}>{"TURMA"}</C.Th>
+              <C.Th key={3}>{"PERIODO"}</C.Th>
+              <C.Th key={4}>{"INÍCIO"}</C.Th>
+              <C.Th key={5}>{"FORMAÇÃO"}</C.Th>
+              <C.Th key={6}>{"AVALIAÇÃO"}</C.Th>
+              <C.Th key={7}>{"AÇÕES"}</C.Th>
             </tr>
           </thead>
           <tbody>

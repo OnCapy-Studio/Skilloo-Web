@@ -34,7 +34,7 @@ const Turmas = () => {
     const token = localStorage.getItem("authToken");
 
     axios
-      .get(`${BASE_URL}/turmas?size=5&page=${pageNumber}`, {
+      .get(`${BASE_URL}/turmas?size=6&page=${pageNumber}`, {
         headers: {
           Authorization: token,
         },

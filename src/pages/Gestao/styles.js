@@ -4,9 +4,15 @@ export const Section = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  width: 100%;
 `;
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 3em;
+  width: 90%;
+`;
 
 export const Title = styled.h1`
   font-size: 30px;

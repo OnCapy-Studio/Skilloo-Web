@@ -55,12 +55,12 @@ const TableLabs = ({ data, reloadController }) => {
           <thead>
             <tr>
               <C.Th key={0}>{""}</C.Th>
-              <C.Th key={1}>{"Id"}</C.Th>
-              <C.Th key={2}>{"Lab"}</C.Th>
-              <C.Th key={3}>{"Capacidade"}</C.Th>
-              <C.Th key={4}>{"Máquinas"}</C.Th>
-              <C.Th key={5}>{"Descrição"}</C.Th>
-              <C.Th key={6}>{"Ações"}</C.Th>
+              <C.Th key={1}>{"ID"}</C.Th>
+              <C.Th key={2}>{"LAB"}</C.Th>
+              <C.Th key={3}>{"CAPACIDADE"}</C.Th>
+              <C.Th key={4}>{"MÁQUINAS"}</C.Th>
+              <C.Th key={5}>{"DESCRIÇÃO"}</C.Th>
+              <C.Th key={6}>{"AÇÕES"}</C.Th>
             </tr>
           </thead>
           <tbody>

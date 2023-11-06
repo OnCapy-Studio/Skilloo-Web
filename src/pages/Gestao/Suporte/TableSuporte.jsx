@@ -55,13 +55,13 @@ const TableSuporte = ({ data, reloadController }) => {
           <thead>
             <tr>
               <C.Th key={0}>{""}</C.Th>
-              <C.Th key={1}>{"Id"}</C.Th>
-              <C.Th key={2}>{"Título"}</C.Th>
-              <C.Th key={3}>{"Lab"}</C.Th>
-              <C.Th key={4}>{"Descrição"}</C.Th>
-              <C.Th key={5}>{"Status"}</C.Th>
-              <C.Th key={6}>{"Autor"}</C.Th>
-              <C.Th key={7}>{"Ações"}</C.Th>
+              <C.Th key={1}>{"ID"}</C.Th>
+              <C.Th key={2}>{"TÍTULO"}</C.Th>
+              <C.Th key={3}>{"LAB"}</C.Th>
+              <C.Th key={4}>{"DESCRIÇÃO"}</C.Th>
+              <C.Th key={5}>{"STATUS"}</C.Th>
+              <C.Th key={6}>{"AUTOR"}</C.Th>
+              <C.Th key={7}>{"AÇÕES"}</C.Th>
             </tr>
           </thead>
           <tbody>
