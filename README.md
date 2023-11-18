@@ -1,8 +1,4 @@
 # Skilloo Web
-
-https://github.com/OnCapy-Studio/Skilloo-Web/assets/84783895/1feb1d80-c214-4951-b6fe-6902ffbabdf3
-&nbsp;
-
 Esta é a primeira versão da home page geral e do gestor do Skilloo web. 
 
 Nesta primeira fase do projeto, foi utilizanda as tecnologias do framework React.JS e algumas bíbliotecas, como: styled components (estilização), react router dom (rotas) e axios (requisições).
@@ -14,6 +10,9 @@ O email e senha para a realização do Log In, são respectivamente:
 - itaquera123
 
 Esses dados podem ser alterados no arquivo useApi.jsx encontrado na pasta /hooks, já que este arquivo é o responsável por retornar os dados da API.
+
+https://github.com/OnCapy-Studio/Skilloo-Web/assets/84783895/1feb1d80-c214-4951-b6fe-6902ffbabdf3
+
 ## Rodando localmente
 
 **Abra o terminal do seu sistema operacional**
