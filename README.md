@@ -1,4 +1,8 @@
-# Tutorial de execução da aplicação web
+# Skilloo Web
+
+&nbsp;
+https://github.com/OnCapy-Studio/Skilloo-Web/assets/84783895/1feb1d80-c214-4951-b6fe-6902ffbabdf3
+&nbsp;
 
 Esta é a primeira versão da home page geral e do gestor do Skilloo web. 
 
@@ -41,4 +45,4 @@ Esses dados podem ser alterados no arquivo useApi.jsx encontrado na pasta /hooks
   npm start
 ```
 
-https://github.com/OnCapy-Studio/Skilloo-Web/assets/84783895/1feb1d80-c214-4951-b6fe-6902ffbabdf3
+
