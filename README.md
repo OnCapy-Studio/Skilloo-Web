@@ -7,8 +7,8 @@ Nesta primeira fase do projeto, foi utilizanda as tecnologias do framework React
 No momento a aplicação possui a função de Log In com email e senha no usuário gestor, além disso, de possui a funcionalidade de permanência (capacidade de permanecer "logado" mesmo com a atualização da página).
 
 O email e senha para a realização do Log In, são respectivamente:
-- admin@gmail.com
-- 123
+- etecdeitaquera@etec.sp.gov.br  
+- itaquera123
 
 Esses dados podem ser alterados no arquivo useApi.jsx encontrado na pasta /hooks, já que este arquivo é o responsável por retornar os dados da API.
 ## Rodando localmente
@@ -41,4 +41,4 @@ Esses dados podem ser alterados no arquivo useApi.jsx encontrado na pasta /hooks
   npm start
 ```
 
-![Group 79](https://github.com/OnCapy-Studio/Skilloo-Web/assets/96017744/8bd7b41a-6b7d-4c66-95ea-295b05e2aab4)
+https://github.com/OnCapy-Studio/Skilloo-Web/assets/84783895/1feb1d80-c214-4951-b6fe-6902ffbabdf3
