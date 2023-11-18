@@ -1,6 +1,5 @@
 # Skilloo Web
 
-&nbsp;
 https://github.com/OnCapy-Studio/Skilloo-Web/assets/84783895/1feb1d80-c214-4951-b6fe-6902ffbabdf3
 &nbsp;
 
